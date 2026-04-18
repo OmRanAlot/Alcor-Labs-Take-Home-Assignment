@@ -51,7 +51,13 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/
-
+.github/
+.cursor/
+.mcp.json
+.opencode.json
+.windsurfrules
+AGENTS.md
+everything-claude-code/*
 # ======= INTERNAL (Alcor Labs team only — NOT for candidates) =======
 internal/
 
@@ -59,3 +65,5 @@ internal/
 data/videos/
 data/videos_full/
 data/videos.zip
+# Added by code-review-graph
+.code-review-graph/
