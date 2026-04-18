@@ -1,0 +1,54 @@
+{
+  "task_name": "Setup Gopro",
+  "clip": "z010-june-16-22-gopro",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student inspects a black GoPro."
+    },
+    {
+      "step_id": 2,
+      "description": "The student accidentally turns on the black GoPro."
+    },
+    {
+      "step_id": 3,
+      "description": "The student changes the old battery for the GoPro."
+    },
+    {
+      "step_id": 4,
+      "description": "The student closes the left battery door of the GoPro."
+    },
+    {
+      "step_id": 5,
+      "description": "The student changes the old micro SD Card to a new one."
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns on the black GoPro by pushing the side button."
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns off the GoPro by pushing the side button."
+    },
+    {
+      "step_id": 8,
+      "description": "The student mounts the black strap onto the GoPro."
+    },
+    {
+      "step_id": 9,
+      "description": "The student disassembles the bottom strap from the GoPro."
+    },
+    {
+      "step_id": 10,
+      "description": "The student mounts the black handheld grip onto the GoPro."
+    },
+    {
+      "step_id": 11,
+      "description": "The student tightens the black handheld grip."
+    },
+    {
+      "step_id": 12,
+      "description": "The student removes the handheld grip from the GoPro."
+    }
+  ]
+}

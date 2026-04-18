@@ -1,0 +1,220 @@
+{
+  "video_name": "R087-27July-GoPro",
+  "task_type": "setup gopro",
+  "total_duration_sec": 226,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student grabs the GoPro.",
+      "start_sec": 4.3,
+      "end_sec": 10.3
+    },
+    {
+      "step_id": 2,
+      "description": "The student changes the battery of GoPro.",
+      "start_sec": 15.3,
+      "end_sec": 221.1
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 10.3,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student grabs the GoPro."
+    },
+    {
+      "timestamp_sec": 15.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 25.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 30.979,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 38.97,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 45.082,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 46.958,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 48.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 54.89,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 62.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 82.939,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 92.08,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 96.811,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 104.533,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot acomplish the task"
+    },
+    {
+      "timestamp_sec": 108.471,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 115.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 147.018,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 148.606,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 168.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 182.867,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 194.05,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student cannot satisfactorily complete the task."
+    },
+    {
+      "timestamp_sec": 221.1,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student changes the battery of GoPro."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 10.3,
+      "end_sec": 15.3,
+      "duration_sec": 5.0
+    }
+  ]
+}

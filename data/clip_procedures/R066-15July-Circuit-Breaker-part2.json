@@ -1,0 +1,50 @@
+{
+  "task_name": "Change Circuit Breaker",
+  "clip": "R066-15July-Circuit-Breaker-part2",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student grabs the circuit breaker."
+    },
+    {
+      "step_id": 2,
+      "description": "The student turns on the circuit breaker box."
+    },
+    {
+      "step_id": 3,
+      "description": "The student closes the front_panel_door."
+    },
+    {
+      "step_id": 4,
+      "description": "The student turns on the main power."
+    },
+    {
+      "step_id": 5,
+      "description": "He turns off the circuit breaker box."
+    },
+    {
+      "step_id": 6,
+      "description": "The student opens the front_panel_door."
+    },
+    {
+      "step_id": 7,
+      "description": "He disassembles the circuit breaker."
+    },
+    {
+      "step_id": 8,
+      "description": "The student put the circuit_breaker back to the toolbox."
+    },
+    {
+      "step_id": 9,
+      "description": "The student inserts a second circuit breaker."
+    },
+    {
+      "step_id": 10,
+      "description": "The student closes the front_panel_door."
+    },
+    {
+      "step_id": 11,
+      "description": "The student turns on the circuit_breaker."
+    }
+  ]
+}

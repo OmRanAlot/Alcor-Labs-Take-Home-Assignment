@@ -1,0 +1,102 @@
+{
+  "task_id": "setup_camera_dslr",
+  "task_name": "Setup DSLR Camera",
+  "description": "Prepare a DSLR camera for use including battery, memory card, and basic configuration.",
+  "safety_notes": [
+    "Handle camera carefully to avoid dropping or impact damage",
+    "Do not touch the mirror or sensor inside the camera",
+    "Store memory cards away from magnetic fields",
+    "Use original or certified batteries and chargers",
+    "Protect the lens from dust and scratches"
+  ],
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student detaches the lens from the DSLR.",
+      "expected_actions": [
+        "disassemble",
+        "lens",
+        "disassemble lens"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 2,
+      "description": "The student attaches the lens to the DSLR.",
+      "expected_actions": [
+        "assemble",
+        "lens",
+        "assemble lens"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 3,
+      "description": "The student detaches the cover of the lens from the DSLR.",
+      "expected_actions": [
+        "disassemble",
+        "lens_cover",
+        "disassemble lens_cover"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 4,
+      "description": "The student attaches the cover of the lens to the DSLR.",
+      "expected_actions": [
+        "assemble",
+        "lens_cover",
+        "assemble lens_cover"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 5,
+      "description": "The student turns on the DSLR.",
+      "expected_actions": [
+        "turn_on",
+        "dslr",
+        "turn_on dslr"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns off the DSLR.",
+      "expected_actions": [
+        "turn_off",
+        "dslr",
+        "turn_off dslr"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 7,
+      "description": "The student exchanged the battery of the DSLR.",
+      "expected_actions": [
+        "exchange",
+        "battery",
+        "exchange battery"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 8,
+      "description": "The student exchanges the sd_card",
+      "expected_actions": [
+        "exchange",
+        "sd_card",
+        "exchange sd_card"
+      ],
+      "common_errors": []
+    }
+  ],
+  "metadata": {
+    "clips_analyzed": 13,
+    "step_count_range": {
+      "min": 8,
+      "max": 10,
+      "canonical": 8
+    }
+  }
+}

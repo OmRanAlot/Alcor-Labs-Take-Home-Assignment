@@ -1,0 +1,295 @@
+{
+  "video_name": "z065-june-29-22-dslr",
+  "task_type": "setup camera",
+  "total_duration_sec": 183,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student detaches the lens from the DSLR.",
+      "start_sec": 6.3,
+      "end_sec": 15
+    },
+    {
+      "step_id": 2,
+      "description": "The student attaches the lens to the DSLR.",
+      "start_sec": 15.069,
+      "end_sec": 26.784
+    },
+    {
+      "step_id": 3,
+      "description": "The student detaches the cover of the lens from the DSLR.",
+      "start_sec": 27.767,
+      "end_sec": 34.967
+    },
+    {
+      "step_id": 4,
+      "description": "The student attaches the cover of the lens to the DSLR.",
+      "start_sec": 35.1,
+      "end_sec": 42.1
+    },
+    {
+      "step_id": 5,
+      "description": "The student turns on the DSLR.",
+      "start_sec": 42.4,
+      "end_sec": 57.2
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns off the DSLR.",
+      "start_sec": 57.5,
+      "end_sec": 63.8
+    },
+    {
+      "step_id": 7,
+      "description": "The student exchanged the battery of the DSLR.",
+      "start_sec": 63.929,
+      "end_sec": 160.298
+    },
+    {
+      "step_id": 8,
+      "description": "The student exchanges the sd_card",
+      "start_sec": 160.858,
+      "end_sec": 181.582
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 15,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student detaches the lens from the DSLR."
+    },
+    {
+      "timestamp_sec": 26.784,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student attaches the lens to the DSLR."
+    },
+    {
+      "timestamp_sec": 34.967,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student detaches the cover of the lens from the DSLR."
+    },
+    {
+      "timestamp_sec": 42.1,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student attaches the cover of the lens to the DSLR."
+    },
+    {
+      "timestamp_sec": 57.2,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student turns on the DSLR."
+    },
+    {
+      "timestamp_sec": 63.8,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student turns off the DSLR."
+    },
+    {
+      "timestamp_sec": 69.049,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 70.036,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 71.064,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 72.085,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 73.038,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student exchanges her position to try opens the battery door but is wrong action."
+    },
+    {
+      "timestamp_sec": 77.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 81.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The students exchanges the angle again to try opens the battery door."
+    },
+    {
+      "timestamp_sec": 88.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pulls desperate the battery door to open."
+    },
+    {
+      "timestamp_sec": 92.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pushes the battery door to try open but nos is possible"
+    },
+    {
+      "timestamp_sec": 94.914,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student changes the angle and hand to open the battery door."
+    },
+    {
+      "timestamp_sec": 96.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pushes in multiple tries to open the battery door, but not is possible."
+    },
+    {
+      "timestamp_sec": 106.225,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student change angle and hand to open the battery door."
+    },
+    {
+      "timestamp_sec": 107.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pushes in multiple tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 112.042,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student changes the angle and hand to try open the battery door."
+    },
+    {
+      "timestamp_sec": 112.976,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pushes in multiple tries to open the battery door but not is possible."
+    },
+    {
+      "timestamp_sec": 122.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The instructor says the student to tray with sd card to open the battery door."
+    },
+    {
+      "timestamp_sec": 139.157,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student tries to open the battery. The instructor say \"you just insert the battery\"."
+    },
+    {
+      "timestamp_sec": 141.301,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "There is no reason to try to open the battery."
+    },
+    {
+      "timestamp_sec": 143.233,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "There is no reason to try to open the battery."
+    },
+    {
+      "timestamp_sec": 146.966,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "There is no reason to try to open the battery."
+    },
+    {
+      "timestamp_sec": 150.566,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Incorrect side."
+    },
+    {
+      "timestamp_sec": 160.298,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student exchanged the battery of the DSLR."
+    },
+    {
+      "timestamp_sec": 181.582,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student exchanges the sd_card"
+    }
+  ],
+  "idle_periods": []
+}

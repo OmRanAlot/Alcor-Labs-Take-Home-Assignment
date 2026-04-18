@@ -1,0 +1,50 @@
+{
+  "task_name": "Setup Gopro",
+  "clip": "R073-20July-GoPro",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student removes the battery from the GoPro."
+    },
+    {
+      "step_id": 2,
+      "description": "The student inserts the battery into the GoPro."
+    },
+    {
+      "step_id": 3,
+      "description": "The student removes the micro SD card from the GoPro."
+    },
+    {
+      "step_id": 4,
+      "description": "The student inserts an SD card."
+    },
+    {
+      "step_id": 5,
+      "description": "The student inserts the battery."
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns on their GoPro."
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns off their GoPro."
+    },
+    {
+      "step_id": 8,
+      "description": "The student assembles the GoPro into the mount."
+    },
+    {
+      "step_id": 9,
+      "description": "The student removes the GoPro from the mount."
+    },
+    {
+      "step_id": 10,
+      "description": "The students assemble the GoPro into the handheld grip."
+    },
+    {
+      "step_id": 11,
+      "description": "The student removes the GoPro from the handheld grip."
+    }
+  ]
+}

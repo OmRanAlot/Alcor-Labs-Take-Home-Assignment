@@ -1,0 +1,183 @@
+{
+  "video_name": "R090-28July-ATV",
+  "task_type": "fix motorcycle",
+  "total_duration_sec": 232,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student slides the lever.",
+      "start_sec": 11.588,
+      "end_sec": 22.543
+    },
+    {
+      "step_id": 2,
+      "description": "The student inserts the arm into the peg.",
+      "start_sec": 27.611,
+      "end_sec": 47.691
+    },
+    {
+      "step_id": 3,
+      "description": "The student grabs a washer.",
+      "start_sec": 51.336,
+      "end_sec": 71.763
+    },
+    {
+      "step_id": 4,
+      "description": "The student screws the bolt and washer onto the mount peg.",
+      "start_sec": 77.571,
+      "end_sec": 93.609
+    },
+    {
+      "step_id": 5,
+      "description": "The student grabs the ratchet.",
+      "start_sec": 97.614,
+      "end_sec": 103.129
+    },
+    {
+      "step_id": 6,
+      "description": "The student tightens the bolt and washer with a ratchet.",
+      "start_sec": 103.171,
+      "end_sec": 115.3
+    },
+    {
+      "step_id": 7,
+      "description": "The student validates the lever.",
+      "start_sec": 120.747,
+      "end_sec": 137.3
+    },
+    {
+      "step_id": 8,
+      "description": "The student use remote to lift the table with the motorcycle.",
+      "start_sec": 142.4,
+      "end_sec": 160
+    },
+    {
+      "step_id": 9,
+      "description": "The student disassembles the arm.",
+      "start_sec": 177.865,
+      "end_sec": 203.11
+    },
+    {
+      "step_id": 10,
+      "description": "The student puts the washer and bolt on the boxes.",
+      "start_sec": 203.169,
+      "end_sec": 215.676
+    },
+    {
+      "step_id": 11,
+      "description": "The student removes the shift arm.",
+      "start_sec": 222.3,
+      "end_sec": 227
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 22.543,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student slides the lever."
+    },
+    {
+      "timestamp_sec": 47.691,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student inserts the arm into the peg."
+    },
+    {
+      "timestamp_sec": 71.763,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student grabs a washer."
+    },
+    {
+      "timestamp_sec": 93.609,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student screws the bolt and washer onto the mount peg."
+    },
+    {
+      "timestamp_sec": 103.129,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student grabs the ratchet."
+    },
+    {
+      "timestamp_sec": 115.3,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student tightens the bolt and washer with a ratchet."
+    },
+    {
+      "timestamp_sec": 137.3,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student validates the lever."
+    },
+    {
+      "timestamp_sec": 160,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student use remote to lift the table with the motorcycle."
+    },
+    {
+      "timestamp_sec": 203.11,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student disassembles the arm."
+    },
+    {
+      "timestamp_sec": 215.676,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student puts the washer and bolt on the boxes."
+    },
+    {
+      "timestamp_sec": 227,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student removes the shift arm."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 22.543,
+      "end_sec": 27.611,
+      "duration_sec": 5.068000000000001
+    },
+    {
+      "start_sec": 47.691,
+      "end_sec": 51.336,
+      "duration_sec": 3.644999999999996
+    },
+    {
+      "start_sec": 71.763,
+      "end_sec": 77.571,
+      "duration_sec": 5.807999999999993
+    },
+    {
+      "start_sec": 93.609,
+      "end_sec": 97.614,
+      "duration_sec": 4.00500000000001
+    },
+    {
+      "start_sec": 115.3,
+      "end_sec": 120.747,
+      "duration_sec": 5.447000000000003
+    },
+    {
+      "start_sec": 137.3,
+      "end_sec": 142.4,
+      "duration_sec": 5.099999999999994
+    },
+    {
+      "start_sec": 160,
+      "end_sec": 177.865,
+      "duration_sec": 17.86500000000001
+    },
+    {
+      "start_sec": 215.676,
+      "end_sec": 222.3,
+      "duration_sec": 6.624000000000024
+    }
+  ]
+}

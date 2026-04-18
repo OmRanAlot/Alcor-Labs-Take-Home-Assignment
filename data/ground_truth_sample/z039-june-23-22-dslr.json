@@ -1,0 +1,224 @@
+{
+  "video_name": "z039-june-23-22-dslr",
+  "task_type": "setup camera",
+  "total_duration_sec": 176,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student detaches the lens of the DSLR camera.",
+      "start_sec": 8.2,
+      "end_sec": 42.2
+    },
+    {
+      "step_id": 2,
+      "description": "The student attaches the lens of the DSLR camera.",
+      "start_sec": 45.1,
+      "end_sec": 55
+    },
+    {
+      "step_id": 3,
+      "description": "The student detaches the cover of the DSLR camera.",
+      "start_sec": 58.2,
+      "end_sec": 61.4
+    },
+    {
+      "step_id": 4,
+      "description": "The student attaches the cover of their DSLR camera.",
+      "start_sec": 63.3,
+      "end_sec": 66
+    },
+    {
+      "step_id": 5,
+      "description": "The student turns on the DSLR camera.",
+      "start_sec": 69,
+      "end_sec": 84.3
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns off the DSLR camera.",
+      "start_sec": 85.967,
+      "end_sec": 89.767
+    },
+    {
+      "step_id": 7,
+      "description": "The student removes the battery from the DSLR camera.",
+      "start_sec": 92.965,
+      "end_sec": 118.065
+    },
+    {
+      "step_id": 8,
+      "description": "The student inserts a battery into the DSLR camera.",
+      "start_sec": 120.1,
+      "end_sec": 124.3
+    },
+    {
+      "step_id": 9,
+      "description": "The student removes the SD card from the DSLR camera.",
+      "start_sec": 126.165,
+      "end_sec": 162.065
+    },
+    {
+      "step_id": 10,
+      "description": "The student inserts an SD card into their DSLR camera.",
+      "start_sec": 165.2,
+      "end_sec": 170.3
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 11.041,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student removes a piece that is not the one they are told."
+    },
+    {
+      "timestamp_sec": 23.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to turn the lens but cannot."
+    },
+    {
+      "timestamp_sec": 31.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student presses the wrong button."
+    },
+    {
+      "timestamp_sec": 42.2,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student detaches the lens of the DSLR camera."
+    },
+    {
+      "timestamp_sec": 55,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student attaches the lens of the DSLR camera."
+    },
+    {
+      "timestamp_sec": 61.4,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student detaches the cover of the DSLR camera."
+    },
+    {
+      "timestamp_sec": 66,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student attaches the cover of their DSLR camera."
+    },
+    {
+      "timestamp_sec": 84.3,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student turns on the DSLR camera."
+    },
+    {
+      "timestamp_sec": 89.767,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student turns off the DSLR camera."
+    },
+    {
+      "timestamp_sec": 118.065,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student removes the battery from the DSLR camera."
+    },
+    {
+      "timestamp_sec": 124.3,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student inserts a battery into the DSLR camera."
+    },
+    {
+      "timestamp_sec": 134.492,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student opens the wrong lid."
+    },
+    {
+      "timestamp_sec": 146,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student presses the wrong button."
+    },
+    {
+      "timestamp_sec": 147.902,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student presses the wrong button."
+    },
+    {
+      "timestamp_sec": 154.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student does not press the button to unlock the sd card."
+    },
+    {
+      "timestamp_sec": 162.065,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student removes the SD card from the DSLR camera."
+    },
+    {
+      "timestamp_sec": 170.3,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student inserts an SD card into their DSLR camera."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 42.2,
+      "end_sec": 45.1,
+      "duration_sec": 2.8999999999999986
+    },
+    {
+      "start_sec": 55,
+      "end_sec": 58.2,
+      "duration_sec": 3.200000000000003
+    },
+    {
+      "start_sec": 66,
+      "end_sec": 69,
+      "duration_sec": 3
+    },
+    {
+      "start_sec": 89.767,
+      "end_sec": 92.965,
+      "duration_sec": 3.1980000000000075
+    },
+    {
+      "start_sec": 118.065,
+      "end_sec": 120.1,
+      "duration_sec": 2.0349999999999966
+    },
+    {
+      "start_sec": 162.065,
+      "end_sec": 165.2,
+      "duration_sec": 3.134999999999991
+    }
+  ]
+}

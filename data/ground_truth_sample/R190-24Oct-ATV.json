@@ -1,0 +1,264 @@
+{
+  "video_name": "R190-24Oct-ATV",
+  "task_type": "fix motorcycle",
+  "total_duration_sec": 358,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student should shift the lever but it is already\nin the neutral.",
+      "start_sec": 28.506,
+      "end_sec": 35.068
+    },
+    {
+      "step_id": 2,
+      "description": "The student slides the shift onto the mountain bike.",
+      "start_sec": 39.2,
+      "end_sec": 46
+    },
+    {
+      "step_id": 3,
+      "description": "The student approaches the toolbox to grab bolt and washer.",
+      "start_sec": 62.064,
+      "end_sec": 75.276
+    },
+    {
+      "step_id": 4,
+      "description": "The student inserts the washer and the bolt into the peg.",
+      "start_sec": 87.2,
+      "end_sec": 142.829
+    },
+    {
+      "step_id": 5,
+      "description": "The student shifts through every gear.",
+      "start_sec": 149.1,
+      "end_sec": 160.2
+    },
+    {
+      "step_id": 6,
+      "description": "The student uses the remote to lift the atv.",
+      "start_sec": 167.047,
+      "end_sec": 232.363
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns off the remote control.",
+      "start_sec": 233.888,
+      "end_sec": 245.661
+    },
+    {
+      "step_id": 8,
+      "description": "The student grabs the ratchet.",
+      "start_sec": 246.076,
+      "end_sec": 253.056
+    },
+    {
+      "step_id": 9,
+      "description": "The student shifts through all the gears.",
+      "start_sec": 254.079,
+      "end_sec": 265.779
+    },
+    {
+      "step_id": 10,
+      "description": "The student detaches the screw using the ratchet.",
+      "start_sec": 267.4,
+      "end_sec": 323.638
+    },
+    {
+      "step_id": 11,
+      "description": "The student places the screw and washer back.",
+      "start_sec": 323.744,
+      "end_sec": 338.265
+    },
+    {
+      "step_id": 12,
+      "description": "The student places the ratchet on the ground.",
+      "start_sec": 339.568,
+      "end_sec": 346.2
+    },
+    {
+      "step_id": 13,
+      "description": "The student unlocks the shift arm.",
+      "start_sec": 347.1,
+      "end_sec": 354.4
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 35.068,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student should shift the lever but it is already\nin the neutral."
+    },
+    {
+      "timestamp_sec": 46,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student slides the shift onto the mountain bike."
+    },
+    {
+      "timestamp_sec": 75.276,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student approaches the toolbox to grab bolt and washer."
+    },
+    {
+      "timestamp_sec": 113.129,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The stundet tightens the screw in the wrong way."
+    },
+    {
+      "timestamp_sec": 142.829,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student inserts the washer and the bolt into the peg."
+    },
+    {
+      "timestamp_sec": 160.2,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student shifts through every gear."
+    },
+    {
+      "timestamp_sec": 173.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student holds the quality_control_bench in a wrong way."
+    },
+    {
+      "timestamp_sec": 178.391,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student holds the quality_control_bench in a wrong way."
+    },
+    {
+      "timestamp_sec": 201.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student presses the wrong button."
+    },
+    {
+      "timestamp_sec": 232.363,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student uses the remote to lift the atv."
+    },
+    {
+      "timestamp_sec": 245.661,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student turns off the remote control."
+    },
+    {
+      "timestamp_sec": 253.056,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student grabs the ratchet."
+    },
+    {
+      "timestamp_sec": 265.779,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student shifts through all the gears."
+    },
+    {
+      "timestamp_sec": 271.483,
+      "type": "error_detected",
+      "error_type": "wrong_sequence",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student should slide the ratchet_adjuster first."
+    },
+    {
+      "timestamp_sec": 285.245,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student screws the bolt."
+    },
+    {
+      "timestamp_sec": 292.995,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student screws the bolt."
+    },
+    {
+      "timestamp_sec": 320.538,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student drops the bolt and washer accidentally."
+    },
+    {
+      "timestamp_sec": 323.638,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student detaches the screw using the ratchet."
+    },
+    {
+      "timestamp_sec": 338.265,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student places the screw and washer back."
+    },
+    {
+      "timestamp_sec": 346.2,
+      "type": "step_completion",
+      "step_id": 12,
+      "description": "The student places the ratchet on the ground."
+    },
+    {
+      "timestamp_sec": 354.4,
+      "type": "step_completion",
+      "step_id": 13,
+      "description": "The student unlocks the shift arm."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 35.068,
+      "end_sec": 39.2,
+      "duration_sec": 4.132000000000005
+    },
+    {
+      "start_sec": 46,
+      "end_sec": 62.064,
+      "duration_sec": 16.064
+    },
+    {
+      "start_sec": 75.276,
+      "end_sec": 87.2,
+      "duration_sec": 11.924000000000007
+    },
+    {
+      "start_sec": 142.829,
+      "end_sec": 149.1,
+      "duration_sec": 6.270999999999987
+    },
+    {
+      "start_sec": 160.2,
+      "end_sec": 167.047,
+      "duration_sec": 6.847000000000008
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "video_name": "z010-june-16-22-gopro",
+  "task_type": "setup gopro",
+  "total_duration_sec": 584,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student inspects a black GoPro.",
+      "start_sec": 9.4,
+      "end_sec": 23.3
+    },
+    {
+      "step_id": 2,
+      "description": "The student accidentally turns on the black GoPro.",
+      "start_sec": 23.4,
+      "end_sec": 36.3
+    },
+    {
+      "step_id": 3,
+      "description": "The student changes the old battery for the GoPro.",
+      "start_sec": 37.2,
+      "end_sec": 82.2
+    },
+    {
+      "step_id": 4,
+      "description": "The student closes the left battery door of the GoPro.",
+      "start_sec": 82.4,
+      "end_sec": 158
+    },
+    {
+      "step_id": 5,
+      "description": "The student changes the old micro SD Card to a new one.",
+      "start_sec": 165.2,
+      "end_sec": 200
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns on the black GoPro by pushing the side button.",
+      "start_sec": 206.5,
+      "end_sec": 241.3
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns off the GoPro by pushing the side button.",
+      "start_sec": 243.2,
+      "end_sec": 250
+    },
+    {
+      "step_id": 8,
+      "description": "The student mounts the black strap onto the GoPro.",
+      "start_sec": 256.1,
+      "end_sec": 311.1
+    },
+    {
+      "step_id": 9,
+      "description": "The student disassembles the bottom strap from the GoPro.",
+      "start_sec": 315.2,
+      "end_sec": 346
+    },
+    {
+      "step_id": 10,
+      "description": "The student mounts the black handheld grip onto the GoPro.",
+      "start_sec": 346.2,
+      "end_sec": 507.05
+    },
+    {
+      "step_id": 11,
+      "description": "The student tightens the black handheld grip.",
+      "start_sec": 507.1205883299798,
+      "end_sec": 543.9705883299798
+    },
+    {
+      "step_id": 12,
+      "description": "The student removes the handheld grip from the GoPro.",
+      "start_sec": 545.4,
+      "end_sec": 580
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 23.3,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student inspects a black GoPro."
+    },
+    {
+      "timestamp_sec": 36.3,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student accidentally turns on the black GoPro."
+    },
+    {
+      "timestamp_sec": 82.2,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student changes the old battery for the GoPro."
+    },
+    {
+      "timestamp_sec": 158,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student closes the left battery door of the GoPro."
+    },
+    {
+      "timestamp_sec": 200,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student changes the old micro SD Card to a new one."
+    },
+    {
+      "timestamp_sec": 241.3,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student turns on the black GoPro by pushing the side button."
+    },
+    {
+      "timestamp_sec": 250,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student turns off the GoPro by pushing the side button."
+    },
+    {
+      "timestamp_sec": 311.1,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student mounts the black strap onto the GoPro."
+    },
+    {
+      "timestamp_sec": 346,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student disassembles the bottom strap from the GoPro."
+    },
+    {
+      "timestamp_sec": 370.355,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "Need to unscrew the screw."
+    },
+    {
+      "timestamp_sec": 507.05,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student mounts the black handheld grip onto the GoPro."
+    },
+    {
+      "timestamp_sec": 543.9705883299798,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student tightens the black handheld grip."
+    },
+    {
+      "timestamp_sec": 580,
+      "type": "step_completion",
+      "step_id": 12,
+      "description": "The student removes the handheld grip from the GoPro."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 158,
+      "end_sec": 165.2,
+      "duration_sec": 7.199999999999989
+    },
+    {
+      "start_sec": 200,
+      "end_sec": 206.5,
+      "duration_sec": 6.5
+    },
+    {
+      "start_sec": 250,
+      "end_sec": 256.1,
+      "duration_sec": 6.100000000000023
+    },
+    {
+      "start_sec": 311.1,
+      "end_sec": 315.2,
+      "duration_sec": 4.099999999999966
+    }
+  ]
+}

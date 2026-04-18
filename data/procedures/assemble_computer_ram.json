@@ -1,0 +1,162 @@
+{
+  "task_id": "assemble_computer_ram",
+  "task_name": "Install RAM Module",
+  "description": "Install a RAM module into a computer motherboard correctly.",
+  "safety_notes": [
+    "Turn off and unplug the computer before opening the case",
+    "Ground yourself to prevent electrostatic discharge damage",
+    "Handle RAM modules by the edges only, avoiding contact with gold connectors",
+    "Do not force RAM into slots; it should slide in smoothly",
+    "Ensure memory is fully seated and retention clips are locked"
+  ],
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student removes the cables from the PC",
+      "expected_actions": [
+        "withdraw",
+        "cable_power_supply",
+        "withdraw cable_power_supply"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 2,
+      "description": "The student lifts the computer to the operating area",
+      "expected_actions": [
+        "place",
+        "computer_tower",
+        "place computer_tower"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 3,
+      "description": "The student opens up the computer tray",
+      "expected_actions": [
+        "withdraw",
+        "cover",
+        "withdraw cover"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 4,
+      "description": "The student removes the first ram stick",
+      "expected_actions": [
+        "withdraw",
+        "ram",
+        "withdraw ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 5,
+      "description": "The student removes the second ram stick",
+      "expected_actions": [
+        "withdraw",
+        "ram",
+        "withdraw ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 6,
+      "description": "The student removes the third ram stick",
+      "expected_actions": [
+        "withdraw",
+        "ram",
+        "withdraw ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 7,
+      "description": "The student removes the fourth ram stick",
+      "expected_actions": [
+        "withdraw",
+        "ram",
+        "withdraw ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 8,
+      "description": "The student inserts the first ram stick",
+      "expected_actions": [
+        "insert",
+        "ram",
+        "insert ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 9,
+      "description": "The student inserts the second ram stick",
+      "expected_actions": [
+        "insert",
+        "ram",
+        "insert ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 10,
+      "description": "The student inserts the third ram stick.",
+      "expected_actions": [
+        "insert",
+        "ram",
+        "insert ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 11,
+      "description": "The student inserts the fourth ram stick",
+      "expected_actions": [
+        "insert",
+        "ram",
+        "insert ram"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 12,
+      "description": "The student closes up the computer tray",
+      "expected_actions": [
+        "close",
+        "cover",
+        "close cover"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 13,
+      "description": "The student lifts the computer",
+      "expected_actions": [
+        "lift",
+        "computer_tower",
+        "lift computer_tower"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 14,
+      "description": "The student connects the wires to the tower PC.",
+      "expected_actions": [
+        "place",
+        "cable_power_supply",
+        "place cable_power_supply"
+      ],
+      "common_errors": []
+    }
+  ],
+  "metadata": {
+    "clips_analyzed": 2,
+    "step_count_range": {
+      "min": 13,
+      "max": 14,
+      "canonical": 14
+    }
+  }
+}

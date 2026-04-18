@@ -1,0 +1,143 @@
+{
+  "task_id": "assemble_computer_graphics_card",
+  "task_name": "Install Graphics Card",
+  "description": "Install a graphics card into a computer motherboard and secure it properly.",
+  "safety_notes": [
+    "Turn off and unplug the computer before opening the case",
+    "Ground yourself to prevent electrostatic discharge damage",
+    "Handle graphics card by the edges and the mounting bracket",
+    "Remove or open the retention bracket on the motherboard slot",
+    "Do not force the card; it should slide in smoothly",
+    "Secure the card with the case bracket and ensure it is fully seated"
+  ],
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student removes the power supply and HDMI cables.",
+      "expected_actions": [
+        "withdraw",
+        "cable_power_supply",
+        "withdraw cable_power_supply"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 2,
+      "description": "The student puts the computer tower on the floor.",
+      "expected_actions": [
+        "place",
+        "computer_tower",
+        "place computer_tower"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 3,
+      "description": "The student removes the cover of the computer tower.",
+      "expected_actions": [
+        "withdraw",
+        "cover",
+        "withdraw cover"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 4,
+      "description": "The student unlocks the computer tabs.",
+      "expected_actions": [
+        "unlock",
+        "computer_tab",
+        "unlock computer_tab"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 5,
+      "description": "The student removes the first graphic card.",
+      "expected_actions": [
+        "withdraw",
+        "graphic_card",
+        "withdraw graphic_card"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 6,
+      "description": "The student removes the second graphic card.",
+      "expected_actions": [
+        "withdraw",
+        "graphic_card",
+        "withdraw graphic_card"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 7,
+      "description": "The student installs a second graphic card.",
+      "expected_actions": [
+        "assemble",
+        "graphic_card",
+        "assemble graphic_card"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 8,
+      "description": "The student assembles the first graphic card.",
+      "expected_actions": [
+        "assemble",
+        "graphic_card",
+        "assemble graphic_card"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 9,
+      "description": "The student locks their computer tabs.",
+      "expected_actions": [
+        "lock",
+        "computer_tab",
+        "lock computer_tab"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 10,
+      "description": "The student closes the cover.",
+      "expected_actions": [
+        "close",
+        "cover",
+        "close cover"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 11,
+      "description": "The student puts the computer tower on the furniture.",
+      "expected_actions": [
+        "place",
+        "computer_tower",
+        "place computer_tower"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 12,
+      "description": "The student plugs the power supply and HDMI cables.",
+      "expected_actions": [
+        "insert",
+        "cable_power_supply",
+        "insert cable_power_supply"
+      ],
+      "common_errors": []
+    }
+  ],
+  "metadata": {
+    "clips_analyzed": 2,
+    "step_count_range": {
+      "min": 11,
+      "max": 12,
+      "canonical": 12
+    }
+  }
+}

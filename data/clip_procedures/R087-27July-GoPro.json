@@ -1,0 +1,14 @@
+{
+  "task_name": "Setup Gopro",
+  "clip": "R087-27July-GoPro",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student grabs the GoPro."
+    },
+    {
+      "step_id": 2,
+      "description": "The student changes the battery of GoPro."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "task_name": "Fix Motorcycle",
+  "clip": "R090-28July-ATV",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student slides the lever."
+    },
+    {
+      "step_id": 2,
+      "description": "The student inserts the arm into the peg."
+    },
+    {
+      "step_id": 3,
+      "description": "The student grabs a washer."
+    },
+    {
+      "step_id": 4,
+      "description": "The student screws the bolt and washer onto the mount peg."
+    },
+    {
+      "step_id": 5,
+      "description": "The student grabs the ratchet."
+    },
+    {
+      "step_id": 6,
+      "description": "The student tightens the bolt and washer with a ratchet."
+    },
+    {
+      "step_id": 7,
+      "description": "The student validates the lever."
+    },
+    {
+      "step_id": 8,
+      "description": "The student use remote to lift the table with the motorcycle."
+    },
+    {
+      "step_id": 9,
+      "description": "The student disassembles the arm."
+    },
+    {
+      "step_id": 10,
+      "description": "The student puts the washer and bolt on the boxes."
+    },
+    {
+      "step_id": 11,
+      "description": "The student removes the shift arm."
+    }
+  ]
+}

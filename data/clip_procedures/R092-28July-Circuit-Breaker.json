@@ -1,0 +1,54 @@
+{
+  "task_name": "Change Circuit Breaker",
+  "clip": "R092-28July-Circuit-Breaker",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student turns off the circuit breaker."
+    },
+    {
+      "step_id": 2,
+      "description": "The student opens the front_panel_door."
+    },
+    {
+      "step_id": 3,
+      "description": "The student removes the circuit breaker."
+    },
+    {
+      "step_id": 4,
+      "description": "The student assembles the circuit breaker."
+    },
+    {
+      "step_id": 5,
+      "description": "The student closes the front_panel_door."
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns on the circuit breaker."
+    },
+    {
+      "step_id": 7,
+      "description": "The student resets the circuit breaker."
+    },
+    {
+      "step_id": 8,
+      "description": "The student resets the circuit breaker."
+    },
+    {
+      "step_id": 9,
+      "description": "The student turns off the circuit breaker."
+    },
+    {
+      "step_id": 10,
+      "description": "The student opens the front_panel_door."
+    },
+    {
+      "step_id": 11,
+      "description": "The student removes the circuit breaker."
+    },
+    {
+      "step_id": 12,
+      "description": "The student turns on the circuit breaker."
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "video_name": "R192-24Oct-CircuitBreaker",
+  "task_type": "change circuit breaker",
+  "total_duration_sec": 172,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student turns off the circuit breaker box.",
+      "start_sec": 7.094,
+      "end_sec": 15
+    },
+    {
+      "step_id": 2,
+      "description": "The student opens the door of the front panel.",
+      "start_sec": 15.2,
+      "end_sec": 22
+    },
+    {
+      "step_id": 3,
+      "description": "The student inspects for visible damage.",
+      "start_sec": 23.1,
+      "end_sec": 45
+    },
+    {
+      "step_id": 4,
+      "description": "The student unplugs the components.",
+      "start_sec": 45.035,
+      "end_sec": 51.735
+    },
+    {
+      "step_id": 5,
+      "description": "The student puts the circuit breaker on the quality control table.",
+      "start_sec": 55.4,
+      "end_sec": 62.3
+    },
+    {
+      "step_id": 6,
+      "description": "The student plugs a new component into a socket.",
+      "start_sec": 65.3,
+      "end_sec": 88.3
+    },
+    {
+      "step_id": 7,
+      "description": "The student closes the panel door.",
+      "start_sec": 89.168,
+      "end_sec": 94.068
+    },
+    {
+      "step_id": 8,
+      "description": "The student turns on the main power.",
+      "start_sec": 94.4,
+      "end_sec": 99.1
+    },
+    {
+      "step_id": 9,
+      "description": "The student presses the reset button on the left side of the second break box.",
+      "start_sec": 99.4,
+      "end_sec": 110
+    },
+    {
+      "step_id": 10,
+      "description": "The student presses the button again to turn it off.",
+      "start_sec": 111.571,
+      "end_sec": 115
+    },
+    {
+      "step_id": 11,
+      "description": "The student turns off the main power.",
+      "start_sec": 116.2,
+      "end_sec": 124
+    },
+    {
+      "step_id": 12,
+      "description": "The student opens the panel.",
+      "start_sec": 125.2,
+      "end_sec": 129.306
+    },
+    {
+      "step_id": 13,
+      "description": "The student disconnects the replacement and puts it in the toolbox, then grabs the other breaker and reconnects it.",
+      "start_sec": 131.826,
+      "end_sec": 162
+    },
+    {
+      "step_id": 14,
+      "description": "The student closes the panel.",
+      "start_sec": 162.4,
+      "end_sec": 166.3
+    },
+    {
+      "step_id": 15,
+      "description": "The student turns the circuit breaker back on.",
+      "start_sec": 167.094,
+      "end_sec": 169.894
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 15,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student turns off the circuit breaker box."
+    },
+    {
+      "timestamp_sec": 22,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student opens the door of the front panel."
+    },
+    {
+      "timestamp_sec": 32.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student touches the wrong place."
+    },
+    {
+      "timestamp_sec": 45,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student inspects for visible damage."
+    },
+    {
+      "timestamp_sec": 51.735,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student unplugs the components."
+    },
+    {
+      "timestamp_sec": 62.3,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student puts the circuit breaker on the quality control table."
+    },
+    {
+      "timestamp_sec": 88.3,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student plugs a new component into a socket."
+    },
+    {
+      "timestamp_sec": 94.068,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student closes the panel door."
+    },
+    {
+      "timestamp_sec": 99.1,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student turns on the main power."
+    },
+    {
+      "timestamp_sec": 110,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student presses the reset button on the left side of the second break box."
+    },
+    {
+      "timestamp_sec": 115,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student presses the button again to turn it off."
+    },
+    {
+      "timestamp_sec": 124,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student turns off the main power."
+    },
+    {
+      "timestamp_sec": 129.306,
+      "type": "step_completion",
+      "step_id": 12,
+      "description": "The student opens the panel."
+    },
+    {
+      "timestamp_sec": 162,
+      "type": "step_completion",
+      "step_id": 13,
+      "description": "The student disconnects the replacement and puts it in the toolbox, then grabs the other breaker and reconnects it."
+    },
+    {
+      "timestamp_sec": 166.3,
+      "type": "step_completion",
+      "step_id": 14,
+      "description": "The student closes the panel."
+    },
+    {
+      "timestamp_sec": 169.894,
+      "type": "step_completion",
+      "step_id": 15,
+      "description": "The student turns the circuit breaker back on."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 51.735,
+      "end_sec": 55.4,
+      "duration_sec": 3.664999999999999
+    },
+    {
+      "start_sec": 62.3,
+      "end_sec": 65.3,
+      "duration_sec": 3.0
+    },
+    {
+      "start_sec": 129.306,
+      "end_sec": 131.826,
+      "duration_sec": 2.519999999999982
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "task_name": "Setup Camera",
+  "clip": "z065-june-29-22-dslr",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student detaches the lens from the DSLR."
+    },
+    {
+      "step_id": 2,
+      "description": "The student attaches the lens to the DSLR."
+    },
+    {
+      "step_id": 3,
+      "description": "The student detaches the cover of the lens from the DSLR."
+    },
+    {
+      "step_id": 4,
+      "description": "The student attaches the cover of the lens to the DSLR."
+    },
+    {
+      "step_id": 5,
+      "description": "The student turns on the DSLR."
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns off the DSLR."
+    },
+    {
+      "step_id": 7,
+      "description": "The student exchanged the battery of the DSLR."
+    },
+    {
+      "step_id": 8,
+      "description": "The student exchanges the sd_card"
+    }
+  ]
+}

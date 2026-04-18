@@ -1,0 +1,50 @@
+{
+  "task_name": "Assemble Computer",
+  "clip": "R198-1Nov-Graphicscard",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student unplugs the computer power supply and HDMI cable."
+    },
+    {
+      "step_id": 2,
+      "description": "The student places the computer on the table."
+    },
+    {
+      "step_id": 3,
+      "description": "The student opens the computer tower."
+    },
+    {
+      "step_id": 4,
+      "description": "The student inspects the computer tower."
+    },
+    {
+      "step_id": 5,
+      "description": "The student removes the first graphic card."
+    },
+    {
+      "step_id": 6,
+      "description": "The student removes the second graphic card."
+    },
+    {
+      "step_id": 7,
+      "description": "The student inserts the graphics cards."
+    },
+    {
+      "step_id": 8,
+      "description": "The student inserts the graphic cards."
+    },
+    {
+      "step_id": 9,
+      "description": "The student closes the computer tower."
+    },
+    {
+      "step_id": 10,
+      "description": "The student places the tower in the computer furniture."
+    },
+    {
+      "step_id": 11,
+      "description": "The student plugs in the HDMI cable and the power supply."
+    }
+  ]
+}

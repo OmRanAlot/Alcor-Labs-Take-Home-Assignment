@@ -1,0 +1,192 @@
+{
+  "video_name": "R142-31Aug-RAM",
+  "task_type": "assemble computer",
+  "total_duration_sec": 223,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student unplugs the power supply and the HDMI cable.",
+      "start_sec": 18.1,
+      "end_sec": 23.2
+    },
+    {
+      "step_id": 2,
+      "description": "The student puts the computer tower on the table.",
+      "start_sec": 33.3,
+      "end_sec": 42
+    },
+    {
+      "step_id": 3,
+      "description": "The student opens the computer tower.",
+      "start_sec": 46.3,
+      "end_sec": 53.3
+    },
+    {
+      "step_id": 4,
+      "description": "The student touches the metal of the computer tower.",
+      "start_sec": 58.2,
+      "end_sec": 82
+    },
+    {
+      "step_id": 5,
+      "description": "The student removes the first RAM card.",
+      "start_sec": 85.1,
+      "end_sec": 104.3
+    },
+    {
+      "step_id": 6,
+      "description": "The student removes the second RAM card.",
+      "start_sec": 105.4,
+      "end_sec": 113.1
+    },
+    {
+      "step_id": 7,
+      "description": "The student withdraws the third RAM card.",
+      "start_sec": 114.5,
+      "end_sec": 121.1
+    },
+    {
+      "step_id": 8,
+      "description": "The student removes the fourth RAM card.",
+      "start_sec": 122.5,
+      "end_sec": 130.3
+    },
+    {
+      "step_id": 9,
+      "description": "The student inserts the first RAM card.",
+      "start_sec": 133.3,
+      "end_sec": 157
+    },
+    {
+      "step_id": 10,
+      "description": "The student inserts the second RAM card.",
+      "start_sec": 158.1,
+      "end_sec": 167.2
+    },
+    {
+      "step_id": 11,
+      "description": "The student inserts the third RAM card.",
+      "start_sec": 168.4,
+      "end_sec": 185
+    },
+    {
+      "step_id": 12,
+      "description": "The student inserts the fourth RAM card.",
+      "start_sec": 185.1,
+      "end_sec": 201.2
+    },
+    {
+      "step_id": 13,
+      "description": "The student closes the computer tower.",
+      "start_sec": 203.2,
+      "end_sec": 214.2
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 23.2,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student unplugs the power supply and the HDMI cable."
+    },
+    {
+      "timestamp_sec": 42,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student puts the computer tower on the table."
+    },
+    {
+      "timestamp_sec": 53.3,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student opens the computer tower."
+    },
+    {
+      "timestamp_sec": 82,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student touches the metal of the computer tower."
+    },
+    {
+      "timestamp_sec": 104.3,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student removes the first RAM card."
+    },
+    {
+      "timestamp_sec": 113.1,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student removes the second RAM card."
+    },
+    {
+      "timestamp_sec": 121.1,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student withdraws the third RAM card."
+    },
+    {
+      "timestamp_sec": 130.3,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student removes the fourth RAM card."
+    },
+    {
+      "timestamp_sec": 157,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student inserts the first RAM card."
+    },
+    {
+      "timestamp_sec": 167.2,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student inserts the second RAM card."
+    },
+    {
+      "timestamp_sec": 185,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student inserts the third RAM card."
+    },
+    {
+      "timestamp_sec": 201.2,
+      "type": "step_completion",
+      "step_id": 12,
+      "description": "The student inserts the fourth RAM card."
+    },
+    {
+      "timestamp_sec": 214.2,
+      "type": "step_completion",
+      "step_id": 13,
+      "description": "The student closes the computer tower."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 23.2,
+      "end_sec": 33.3,
+      "duration_sec": 10.099999999999998
+    },
+    {
+      "start_sec": 42,
+      "end_sec": 46.3,
+      "duration_sec": 4.299999999999997
+    },
+    {
+      "start_sec": 53.3,
+      "end_sec": 58.2,
+      "duration_sec": 4.900000000000006
+    },
+    {
+      "start_sec": 82,
+      "end_sec": 85.1,
+      "duration_sec": 3.0999999999999943
+    },
+    {
+      "start_sec": 130.3,
+      "end_sec": 133.3,
+      "duration_sec": 3.0
+    }
+  ]
+}

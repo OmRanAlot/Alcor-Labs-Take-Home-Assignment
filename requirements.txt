@@ -1,0 +1,13 @@
+# Core dependencies
+opencv-python-headless>=4.8
+numpy>=1.26
+requests>=2.31
+Pillow>=10.1
+av>=11.0
+
+# JSON and data handling
+python-dotenv>=1.0
+
+# Optional: for testing and development
+pytest>=7.4
+pytest-cov>=4.1

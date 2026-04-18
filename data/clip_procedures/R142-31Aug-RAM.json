@@ -1,0 +1,58 @@
+{
+  "task_name": "Assemble Computer",
+  "clip": "R142-31Aug-RAM",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student unplugs the power supply and the HDMI cable."
+    },
+    {
+      "step_id": 2,
+      "description": "The student puts the computer tower on the table."
+    },
+    {
+      "step_id": 3,
+      "description": "The student opens the computer tower."
+    },
+    {
+      "step_id": 4,
+      "description": "The student touches the metal of the computer tower."
+    },
+    {
+      "step_id": 5,
+      "description": "The student removes the first RAM card."
+    },
+    {
+      "step_id": 6,
+      "description": "The student removes the second RAM card."
+    },
+    {
+      "step_id": 7,
+      "description": "The student withdraws the third RAM card."
+    },
+    {
+      "step_id": 8,
+      "description": "The student removes the fourth RAM card."
+    },
+    {
+      "step_id": 9,
+      "description": "The student inserts the first RAM card."
+    },
+    {
+      "step_id": 10,
+      "description": "The student inserts the second RAM card."
+    },
+    {
+      "step_id": 11,
+      "description": "The student inserts the third RAM card."
+    },
+    {
+      "step_id": 12,
+      "description": "The student inserts the fourth RAM card."
+    },
+    {
+      "step_id": 13,
+      "description": "The student closes the computer tower."
+    }
+  ]
+}

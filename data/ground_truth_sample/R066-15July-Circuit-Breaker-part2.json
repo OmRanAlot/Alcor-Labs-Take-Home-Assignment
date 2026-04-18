@@ -1,0 +1,222 @@
+{
+  "video_name": "R066-15July-Circuit-Breaker-part2",
+  "task_type": "change circuit breaker",
+  "total_duration_sec": 176,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student grabs the circuit breaker.",
+      "start_sec": 9.2,
+      "end_sec": 49.653
+    },
+    {
+      "step_id": 2,
+      "description": "The student turns on the circuit breaker box.",
+      "start_sec": 50.137,
+      "end_sec": 57.349
+    },
+    {
+      "step_id": 3,
+      "description": "The student closes the front_panel_door.",
+      "start_sec": 64.667,
+      "end_sec": 68.657
+    },
+    {
+      "step_id": 4,
+      "description": "The student turns on the main power.",
+      "start_sec": 70.383,
+      "end_sec": 98.716
+    },
+    {
+      "step_id": 5,
+      "description": "He turns off the circuit breaker box.",
+      "start_sec": 103.632,
+      "end_sec": 110.345
+    },
+    {
+      "step_id": 6,
+      "description": "The student opens the front_panel_door.",
+      "start_sec": 111.432,
+      "end_sec": 114.991
+    },
+    {
+      "step_id": 7,
+      "description": "He disassembles the circuit breaker.",
+      "start_sec": 117.155,
+      "end_sec": 123.849
+    },
+    {
+      "step_id": 8,
+      "description": "The student put the circuit_breaker back to the toolbox.",
+      "start_sec": 125.52,
+      "end_sec": 136.765
+    },
+    {
+      "step_id": 9,
+      "description": "The student inserts a second circuit breaker.",
+      "start_sec": 140.329,
+      "end_sec": 157.951
+    },
+    {
+      "step_id": 10,
+      "description": "The student closes the front_panel_door.",
+      "start_sec": 159.5,
+      "end_sec": 163.383
+    },
+    {
+      "step_id": 11,
+      "description": "The student turns on the circuit_breaker.",
+      "start_sec": 166.108,
+      "end_sec": 171.716
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 11.698,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student grabs the wrong toolbox."
+    },
+    {
+      "timestamp_sec": 13.216,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student grabs the wrong toolbox."
+    },
+    {
+      "timestamp_sec": 14.306,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student slides the wrong toolbox."
+    },
+    {
+      "timestamp_sec": 18.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student lifts the wrong toolbox."
+    },
+    {
+      "timestamp_sec": 33.639,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student grabs wrong part."
+    },
+    {
+      "timestamp_sec": 49.653,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student grabs the circuit breaker."
+    },
+    {
+      "timestamp_sec": 57.349,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student turns on the circuit breaker box."
+    },
+    {
+      "timestamp_sec": 68.657,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student closes the front_panel_door."
+    },
+    {
+      "timestamp_sec": 85.004,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The student presses the button slightly."
+    },
+    {
+      "timestamp_sec": 98.716,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student turns on the main power."
+    },
+    {
+      "timestamp_sec": 110.345,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "He turns off the circuit breaker box."
+    },
+    {
+      "timestamp_sec": 114.991,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student opens the front_panel_door."
+    },
+    {
+      "timestamp_sec": 123.849,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "He disassembles the circuit breaker."
+    },
+    {
+      "timestamp_sec": 136.765,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student put the circuit_breaker back to the toolbox."
+    },
+    {
+      "timestamp_sec": 157.951,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student inserts a second circuit breaker."
+    },
+    {
+      "timestamp_sec": 163.383,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student closes the front_panel_door."
+    },
+    {
+      "timestamp_sec": 171.716,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student turns on the circuit_breaker."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 57.349,
+      "end_sec": 64.667,
+      "duration_sec": 7.318000000000005
+    },
+    {
+      "start_sec": 98.716,
+      "end_sec": 103.632,
+      "duration_sec": 4.916000000000011
+    },
+    {
+      "start_sec": 114.991,
+      "end_sec": 117.155,
+      "duration_sec": 2.1640000000000015
+    },
+    {
+      "start_sec": 136.765,
+      "end_sec": 140.329,
+      "duration_sec": 3.5640000000000214
+    },
+    {
+      "start_sec": 163.383,
+      "end_sec": 166.108,
+      "duration_sec": 2.7249999999999943
+    }
+  ]
+}

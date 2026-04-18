@@ -1,0 +1,185 @@
+{
+  "video_name": "R092-28July-Circuit-Breaker",
+  "task_type": "change circuit breaker",
+  "total_duration_sec": 161,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student turns off the circuit breaker.",
+      "start_sec": 14.724,
+      "end_sec": 19.544
+    },
+    {
+      "step_id": 2,
+      "description": "The student opens the front_panel_door.",
+      "start_sec": 19.882,
+      "end_sec": 26.161
+    },
+    {
+      "step_id": 3,
+      "description": "The student removes the circuit breaker.",
+      "start_sec": 34.5,
+      "end_sec": 47
+    },
+    {
+      "step_id": 4,
+      "description": "The student assembles the circuit breaker.",
+      "start_sec": 55.859,
+      "end_sec": 75.512
+    },
+    {
+      "step_id": 5,
+      "description": "The student closes the front_panel_door.",
+      "start_sec": 82.852,
+      "end_sec": 88.837
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns on the circuit breaker.",
+      "start_sec": 90.609,
+      "end_sec": 96.95
+    },
+    {
+      "step_id": 7,
+      "description": "The student resets the circuit breaker.",
+      "start_sec": 100.818,
+      "end_sec": 104.73
+    },
+    {
+      "step_id": 8,
+      "description": "The student resets the circuit breaker.",
+      "start_sec": 106.998,
+      "end_sec": 113.969
+    },
+    {
+      "step_id": 9,
+      "description": "The student turns off the circuit breaker.",
+      "start_sec": 117.156,
+      "end_sec": 121.653
+    },
+    {
+      "step_id": 10,
+      "description": "The student opens the front_panel_door.",
+      "start_sec": 121.777,
+      "end_sec": 126.616
+    },
+    {
+      "step_id": 11,
+      "description": "The student removes the circuit breaker.",
+      "start_sec": 127.494,
+      "end_sec": 139.824
+    },
+    {
+      "step_id": 12,
+      "description": "The student turns on the circuit breaker.",
+      "start_sec": 140.988,
+      "end_sec": 157.1
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 19.544,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student turns off the circuit breaker."
+    },
+    {
+      "timestamp_sec": 26.161,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student opens the front_panel_door."
+    },
+    {
+      "timestamp_sec": 47,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student removes the circuit breaker."
+    },
+    {
+      "timestamp_sec": 75.512,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student assembles the circuit breaker."
+    },
+    {
+      "timestamp_sec": 88.837,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student closes the front_panel_door."
+    },
+    {
+      "timestamp_sec": 96.95,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student turns on the circuit breaker."
+    },
+    {
+      "timestamp_sec": 104.73,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student resets the circuit breaker."
+    },
+    {
+      "timestamp_sec": 113.969,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student resets the circuit breaker."
+    },
+    {
+      "timestamp_sec": 121.653,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student turns off the circuit breaker."
+    },
+    {
+      "timestamp_sec": 126.616,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student opens the front_panel_door."
+    },
+    {
+      "timestamp_sec": 139.824,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student removes the circuit breaker."
+    },
+    {
+      "timestamp_sec": 157.1,
+      "type": "step_completion",
+      "step_id": 12,
+      "description": "The student turns on the circuit breaker."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 26.161,
+      "end_sec": 34.5,
+      "duration_sec": 8.338999999999999
+    },
+    {
+      "start_sec": 47,
+      "end_sec": 55.859,
+      "duration_sec": 8.859000000000002
+    },
+    {
+      "start_sec": 75.512,
+      "end_sec": 82.852,
+      "duration_sec": 7.340000000000003
+    },
+    {
+      "start_sec": 96.95,
+      "end_sec": 100.818,
+      "duration_sec": 3.867999999999995
+    },
+    {
+      "start_sec": 104.73,
+      "end_sec": 106.998,
+      "duration_sec": 2.2680000000000007
+    },
+    {
+      "start_sec": 113.969,
+      "end_sec": 117.156,
+      "duration_sec": 3.187000000000012
+    }
+  ]
+}

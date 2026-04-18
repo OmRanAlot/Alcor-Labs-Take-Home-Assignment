@@ -1,0 +1,132 @@
+{
+  "task_id": "setup_gopro",
+  "task_name": "Setup GoPro Camera",
+  "description": "Prepare a GoPro action camera for use including battery, memory card, and protective housing.",
+  "safety_notes": [
+    "Handle camera carefully to avoid damage",
+    "Check waterproof housing seals if using underwater",
+    "Do not touch the lens surface",
+    "Use approved batteries and memory cards only",
+    "Ensure protective doors and latches are fully closed"
+  ],
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student removes the battery from the GoPro.",
+      "expected_actions": [
+        "withdraw",
+        "battery",
+        "withdraw battery"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 2,
+      "description": "The student inserts the battery into the GoPro.",
+      "expected_actions": [
+        "insert",
+        "battery",
+        "insert battery"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 3,
+      "description": "The student removes the micro SD card from the GoPro.",
+      "expected_actions": [
+        "withdraw",
+        "sd_card",
+        "withdraw sd_card"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 4,
+      "description": "The student inserts an SD card.",
+      "expected_actions": [
+        "insert",
+        "sd_card",
+        "insert sd_card"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 5,
+      "description": "The student inserts the battery.",
+      "expected_actions": [
+        "insert",
+        "battery",
+        "insert battery"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns on their GoPro.",
+      "expected_actions": [
+        "turn_on",
+        "gopro",
+        "turn_on gopro"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns off their GoPro.",
+      "expected_actions": [
+        "turn_off",
+        "gopro",
+        "turn_off gopro"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 8,
+      "description": "The student assembles the GoPro into the mount.",
+      "expected_actions": [
+        "assemble",
+        "mounting_peg",
+        "assemble mounting_peg"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 9,
+      "description": "The student removes the GoPro from the mount.",
+      "expected_actions": [
+        "withdraw",
+        "gopro",
+        "withdraw gopro"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 10,
+      "description": "The students assemble the GoPro into the handheld grip.",
+      "expected_actions": [
+        "assemble",
+        "gopro",
+        "assemble gopro"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 11,
+      "description": "The student removes the GoPro from the handheld grip.",
+      "expected_actions": [
+        "withdraw",
+        "gopro",
+        "withdraw gopro"
+      ],
+      "common_errors": []
+    }
+  ],
+  "metadata": {
+    "clips_analyzed": 20,
+    "step_count_range": {
+      "min": 2,
+      "max": 15,
+      "canonical": 11
+    }
+  }
+}

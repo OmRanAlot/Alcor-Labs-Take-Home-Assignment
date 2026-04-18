@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VLM Orchestrator Event Log",
+  "description": "Output schema for the procedural assistant pipeline. Produced by the streaming harness.",
+  "type": "object",
+  "required": ["task", "video_source", "events"],
+  "properties": {
+    "task": {
+      "type": "string",
+      "description": "Name of the procedure being monitored"
+    },
+    "video_source": {
+      "type": "string",
+      "description": "Path or URL to the input video"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "speed": {
+      "type": "number",
+      "description": "Harness playback speed (1.0 = real-time)"
+    },
+    "video_duration_sec": {
+      "type": "number"
+    },
+    "wall_duration_sec": {
+      "type": "number",
+      "description": "Actual wall-clock time the pipeline took"
+    },
+    "total_frames_delivered": {
+      "type": "integer"
+    },
+    "total_audio_chunks_delivered": {
+      "type": "integer"
+    },
+    "model_used": {
+      "type": "string"
+    },
+    "total_api_cost_usd": {
+      "type": "number"
+    },
+    "mean_detection_delay_sec": {
+      "type": "number",
+      "description": "Average seconds between event occurrence and pipeline detection"
+    },
+    "max_detection_delay_sec": {
+      "type": "number"
+    },
+    "events": {
+      "type": "array",
+      "description": "Chronologically ordered detected events",
+      "items": {
+        "type": "object",
+        "required": ["timestamp_sec", "type"],
+        "properties": {
+          "timestamp_sec": {
+            "type": "number",
+            "description": "Video timestamp (seconds) where this event occurred"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["step_completion", "error_detected", "idle_detected"]
+          },
+          "step_id": {
+            "type": "integer"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "error_type": {
+            "type": "string",
+            "enum": ["wrong_action", "wrong_sequence", "safety_violation", "improper_technique", "other"]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["info", "warning", "critical"]
+          },
+          "source": {
+            "type": "string",
+            "enum": ["video", "audio", "both"],
+            "description": "Which input stream triggered this detection"
+          },
+          "vlm_observation": {
+            "type": "string",
+            "description": "Raw model output that led to this detection"
+          },
+          "detection_delay_sec": {
+            "type": "number",
+            "description": "Seconds between event occurrence in video and pipeline detection. Added by harness."
+          },
+          "spoken_response": {
+            "type": "string",
+            "description": "Text of what the assistant would say to the user (e.g., 'Stop — you grabbed the wrong toolbox. The circuit breaker parts are in the blue box on your right.'). Required for error_detected events."
+          },
+          "spoken_audio_path": {
+            "type": "string",
+            "description": "Path to generated TTS audio file for this response (optional, bonus)."
+          }
+        }
+      }
+    }
+  }
+}

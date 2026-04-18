@@ -1,0 +1,272 @@
+{
+  "video_name": "z108-july-26-22-gopro",
+  "task_type": "setup gopro",
+  "total_duration_sec": 325,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student opens the battery door.",
+      "start_sec": 6.4,
+      "end_sec": 22.1
+    },
+    {
+      "step_id": 2,
+      "description": "The student exchanges the battery from the GoPro.",
+      "start_sec": 23.2,
+      "end_sec": 40
+    },
+    {
+      "step_id": 3,
+      "description": "The student opens the battery door.",
+      "start_sec": 44.3,
+      "end_sec": 56.2
+    },
+    {
+      "step_id": 4,
+      "description": "The student exchanges the SD card from the GoPro.",
+      "start_sec": 58.1,
+      "end_sec": 85.2
+    },
+    {
+      "step_id": 5,
+      "description": "The student turns on the GoPro.",
+      "start_sec": 88.4,
+      "end_sec": 95.4
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns off the GoPro.",
+      "start_sec": 96.4,
+      "end_sec": 106.3
+    },
+    {
+      "step_id": 7,
+      "description": "The student assembles the strap on the GoPro.",
+      "start_sec": 110.4,
+      "end_sec": 180.2
+    },
+    {
+      "step_id": 8,
+      "description": "The student disassembles the strap from the GoPro.",
+      "start_sec": 186.2,
+      "end_sec": 203.1
+    },
+    {
+      "step_id": 9,
+      "description": "The student aligns the handheld grip on the mount.",
+      "start_sec": 203.27058880954533,
+      "end_sec": 234.1705888095453
+    },
+    {
+      "step_id": 10,
+      "description": "The student screws the lock screw on the mount.",
+      "start_sec": 234.2,
+      "end_sec": 254.1
+    },
+    {
+      "step_id": 11,
+      "description": "The student disassembles the handheld grip from the GoPro.",
+      "start_sec": 258.2,
+      "end_sec": 271.15
+    },
+    {
+      "step_id": 12,
+      "description": "The student unscrews the lock screw from the tripod.",
+      "start_sec": 271.15,
+      "end_sec": 278
+    },
+    {
+      "step_id": 13,
+      "description": "The student assembles the tripod on the mount.",
+      "start_sec": 278.3,
+      "end_sec": 298
+    },
+    {
+      "step_id": 14,
+      "description": "The student disassembles the tripod from the GoPro.",
+      "start_sec": 304.1,
+      "end_sec": 323
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 13.073,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 14.418,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 22.1,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student opens the battery door."
+    },
+    {
+      "timestamp_sec": 40,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student exchanges the battery from the GoPro."
+    },
+    {
+      "timestamp_sec": 56.2,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student opens the battery door."
+    },
+    {
+      "timestamp_sec": 66.066,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 70.006,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 85.2,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student exchanges the SD card from the GoPro."
+    },
+    {
+      "timestamp_sec": 95.4,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student turns on the GoPro."
+    },
+    {
+      "timestamp_sec": 106.3,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student turns off the GoPro."
+    },
+    {
+      "timestamp_sec": 148.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 151.028,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 180.2,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student assembles the strap on the GoPro."
+    },
+    {
+      "timestamp_sec": 203.1,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student disassembles the strap from the GoPro."
+    },
+    {
+      "timestamp_sec": 212.16,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed action."
+    },
+    {
+      "timestamp_sec": 234.1705888095453,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student aligns the handheld grip on the mount."
+    },
+    {
+      "timestamp_sec": 254.1,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student screws the lock screw on the mount."
+    },
+    {
+      "timestamp_sec": 271.15,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student disassembles the handheld grip from the GoPro."
+    },
+    {
+      "timestamp_sec": 278,
+      "type": "step_completion",
+      "step_id": 12,
+      "description": "The student unscrews the lock screw from the tripod."
+    },
+    {
+      "timestamp_sec": 298,
+      "type": "step_completion",
+      "step_id": 13,
+      "description": "The student assembles the tripod on the mount."
+    },
+    {
+      "timestamp_sec": 323,
+      "type": "step_completion",
+      "step_id": 14,
+      "description": "The student disassembles the tripod from the GoPro."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 40,
+      "end_sec": 44.3,
+      "duration_sec": 4.299999999999997
+    },
+    {
+      "start_sec": 85.2,
+      "end_sec": 88.4,
+      "duration_sec": 3.200000000000003
+    },
+    {
+      "start_sec": 106.3,
+      "end_sec": 110.4,
+      "duration_sec": 4.1000000000000085
+    },
+    {
+      "start_sec": 180.2,
+      "end_sec": 186.2,
+      "duration_sec": 6.0
+    },
+    {
+      "start_sec": 254.1,
+      "end_sec": 258.2,
+      "duration_sec": 4.099999999999994
+    },
+    {
+      "start_sec": 298,
+      "end_sec": 304.1,
+      "duration_sec": 6.100000000000023
+    }
+  ]
+}

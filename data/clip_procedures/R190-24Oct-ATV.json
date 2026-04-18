@@ -1,0 +1,58 @@
+{
+  "task_name": "Fix Motorcycle",
+  "clip": "R190-24Oct-ATV",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student should shift the lever but it is already\nin the neutral."
+    },
+    {
+      "step_id": 2,
+      "description": "The student slides the shift onto the mountain bike."
+    },
+    {
+      "step_id": 3,
+      "description": "The student approaches the toolbox to grab bolt and washer."
+    },
+    {
+      "step_id": 4,
+      "description": "The student inserts the washer and the bolt into the peg."
+    },
+    {
+      "step_id": 5,
+      "description": "The student shifts through every gear."
+    },
+    {
+      "step_id": 6,
+      "description": "The student uses the remote to lift the atv."
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns off the remote control."
+    },
+    {
+      "step_id": 8,
+      "description": "The student grabs the ratchet."
+    },
+    {
+      "step_id": 9,
+      "description": "The student shifts through all the gears."
+    },
+    {
+      "step_id": 10,
+      "description": "The student detaches the screw using the ratchet."
+    },
+    {
+      "step_id": 11,
+      "description": "The student places the screw and washer back."
+    },
+    {
+      "step_id": 12,
+      "description": "The student places the ratchet on the ground."
+    },
+    {
+      "step_id": 13,
+      "description": "The student unlocks the shift arm."
+    }
+  ]
+}

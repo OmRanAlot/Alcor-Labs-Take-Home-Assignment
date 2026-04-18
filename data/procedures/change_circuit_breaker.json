@@ -1,0 +1,133 @@
+{
+  "task_id": "change_circuit_breaker",
+  "task_name": "Change Circuit Breaker",
+  "description": "Replace a damaged circuit breaker in an electrical panel following proper safety protocols.",
+  "safety_notes": [
+    "Always turn off main power before opening the electrical panel",
+    "Verify power is off using a voltage tester before proceeding",
+    "Never touch live electrical components",
+    "Keep hands dry when working with electrical equipment",
+    "Wear appropriate personal protective equipment if required",
+    "Follow local electrical codes and regulations"
+  ],
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student turns off the lever on the main power.",
+      "expected_actions": [
+        "turn_off",
+        "circuit_breaker",
+        "turn_off circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 2,
+      "description": "The student opens the front_panel_door.",
+      "expected_actions": [
+        "open",
+        "front_panel_door",
+        "open front_panel_door"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 3,
+      "description": "The student tries to identify the broken component.",
+      "expected_actions": [
+        "inspect",
+        "circuit_breaker",
+        "inspect circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 4,
+      "description": "The student opens the red box and takes the circuit breaker.",
+      "expected_actions": [
+        "grab",
+        "circuit_breaker",
+        "grab circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 5,
+      "description": "The student assembles the circuit breaker in the right place.",
+      "expected_actions": [
+        "assemble",
+        "circuit_breaker",
+        "assemble circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 6,
+      "description": "The student closes the front panel door.",
+      "expected_actions": [
+        "close",
+        "front_panel_door",
+        "close front_panel_door"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 7,
+      "description": "The student turns the lever on.",
+      "expected_actions": [
+        "turn_on",
+        "circuit_breaker",
+        "turn_on circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 8,
+      "description": "The student presses the button to reset the circuit_breaker.",
+      "expected_actions": [
+        "reset",
+        "circuit_breaker",
+        "reset circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 9,
+      "description": "The student turns off the lever.",
+      "expected_actions": [
+        "turn_off",
+        "circuit_breaker",
+        "turn_off circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 10,
+      "description": "The student withdraws the circuit breaker and puts the circuit breaker in the toolbox.",
+      "expected_actions": [
+        "place",
+        "circuit_breaker",
+        "place circuit_breaker"
+      ],
+      "common_errors": []
+    },
+    {
+      "step_id": 11,
+      "description": "The student places the circuit breaker in the right place.",
+      "expected_actions": [
+        "assemble",
+        "circuit_breaker",
+        "assemble circuit_breaker"
+      ],
+      "common_errors": []
+    }
+  ],
+  "metadata": {
+    "clips_analyzed": 6,
+    "step_count_range": {
+      "min": 11,
+      "max": 15,
+      "canonical": 12
+    }
+  }
+}

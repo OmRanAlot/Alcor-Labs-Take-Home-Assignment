@@ -1,0 +1,216 @@
+{
+  "video_name": "R198-1Nov-Graphicscard",
+  "task_type": "assemble computer",
+  "total_duration_sec": 295,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student unplugs the computer power supply and HDMI cable.",
+      "start_sec": 9.1,
+      "end_sec": 15
+    },
+    {
+      "step_id": 2,
+      "description": "The student places the computer on the table.",
+      "start_sec": 15.2,
+      "end_sec": 28.9
+    },
+    {
+      "step_id": 3,
+      "description": "The student opens the computer tower.",
+      "start_sec": 29.1,
+      "end_sec": 35.2
+    },
+    {
+      "step_id": 4,
+      "description": "The student inspects the computer tower.",
+      "start_sec": 46.3,
+      "end_sec": 74
+    },
+    {
+      "step_id": 5,
+      "description": "The student removes the first graphic card.",
+      "start_sec": 74.15623283030492,
+      "end_sec": 151
+    },
+    {
+      "step_id": 6,
+      "description": "The student removes the second graphic card.",
+      "start_sec": 151.1,
+      "end_sec": 188.79946165691405
+    },
+    {
+      "step_id": 7,
+      "description": "The student inserts the graphics cards.",
+      "start_sec": 194.2,
+      "end_sec": 236.2
+    },
+    {
+      "step_id": 8,
+      "description": "The student inserts the graphic cards.",
+      "start_sec": 236.3,
+      "end_sec": 259.1
+    },
+    {
+      "step_id": 9,
+      "description": "The student closes the computer tower.",
+      "start_sec": 259.2,
+      "end_sec": 273
+    },
+    {
+      "step_id": 10,
+      "description": "The student places the tower in the computer furniture.",
+      "start_sec": 273.3,
+      "end_sec": 282
+    },
+    {
+      "step_id": 11,
+      "description": "The student plugs in the HDMI cable and the power supply.",
+      "start_sec": 282.063,
+      "end_sec": 290.163
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 15,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student unplugs the computer power supply and HDMI cable."
+    },
+    {
+      "timestamp_sec": 28.9,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student places the computer on the table."
+    },
+    {
+      "timestamp_sec": 35.2,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student opens the computer tower."
+    },
+    {
+      "timestamp_sec": 74,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student inspects the computer tower."
+    },
+    {
+      "timestamp_sec": 76.548,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student is pushing the tab the wrong direction."
+    },
+    {
+      "timestamp_sec": 85.382,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pushes the tabs in the wrong direction."
+    },
+    {
+      "timestamp_sec": 89.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student is pushing the tabs in the wrong direction."
+    },
+    {
+      "timestamp_sec": 98.616,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pushes the tabs in the wrong direction."
+    },
+    {
+      "timestamp_sec": 120.496,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student can't unlock the tab."
+    },
+    {
+      "timestamp_sec": 135.213,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to unlock the tab."
+    },
+    {
+      "timestamp_sec": 139.1,
+      "type": "error_detected",
+      "error_type": "wrong_sequence",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student pulls the graphic card without unlocking the tab first."
+    },
+    {
+      "timestamp_sec": 151,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student removes the first graphic card."
+    },
+    {
+      "timestamp_sec": 188.79946165691405,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student removes the second graphic card."
+    },
+    {
+      "timestamp_sec": 236.2,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student inserts the graphics cards."
+    },
+    {
+      "timestamp_sec": 259.1,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student inserts the graphic cards."
+    },
+    {
+      "timestamp_sec": 273,
+      "type": "step_completion",
+      "step_id": 9,
+      "description": "The student closes the computer tower."
+    },
+    {
+      "timestamp_sec": 282,
+      "type": "step_completion",
+      "step_id": 10,
+      "description": "The student places the tower in the computer furniture."
+    },
+    {
+      "timestamp_sec": 290.163,
+      "type": "step_completion",
+      "step_id": 11,
+      "description": "The student plugs in the HDMI cable and the power supply."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 35.2,
+      "end_sec": 46.3,
+      "duration_sec": 11.099999999999994
+    },
+    {
+      "start_sec": 188.79946165691405,
+      "end_sec": 194.2,
+      "duration_sec": 5.400538343085941
+    }
+  ]
+}

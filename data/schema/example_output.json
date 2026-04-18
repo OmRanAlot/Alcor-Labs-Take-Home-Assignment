@@ -1,0 +1,49 @@
+{
+  "task": "Change Circuit Breaker",
+  "video_source": "path/to/Video_pitchshift.mp4",
+  "start_time": "2026-03-18T10:00:00Z",
+  "end_time": "2026-03-18T10:03:12Z",
+  "total_frames_delivered": 86,
+  "total_audio_chunks_delivered": 17,
+  "model_used": "google/gemini-2.5-flash",
+  "total_api_cost_usd": 0.12,
+  "events": [
+    {
+      "timestamp_sec": 13.2,
+      "type": "error_detected",
+      "step_id": 1,
+      "confidence": 0.85,
+      "description": "The student grabs the wrong toolbox.",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "source": "video",
+      "vlm_observation": "The person is reaching for a red toolbox on the left side, but the circuit breaker components are in the toolbox on the right."
+    },
+    {
+      "timestamp_sec": 49.7,
+      "type": "step_completion",
+      "step_id": 1,
+      "confidence": 0.92,
+      "description": "The student grabs the circuit breaker.",
+      "source": "video",
+      "vlm_observation": "The person is now holding the correct circuit breaker component in their right hand."
+    },
+    {
+      "timestamp_sec": 57.3,
+      "type": "step_completion",
+      "step_id": 2,
+      "confidence": 0.88,
+      "description": "The student turns on the circuit breaker box.",
+      "source": "both",
+      "vlm_observation": "A clicking sound is heard and the switch on the breaker box is now in the ON position."
+    },
+    {
+      "timestamp_sec": 62.0,
+      "type": "idle_detected",
+      "confidence": 0.75,
+      "description": "No activity detected for ~7 seconds between steps 2 and 3.",
+      "source": "video",
+      "vlm_observation": "The person's hands are stationary and no task-related movement is visible."
+    }
+  ]
+}

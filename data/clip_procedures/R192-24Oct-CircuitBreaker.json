@@ -1,0 +1,66 @@
+{
+  "task_name": "Change Circuit Breaker",
+  "clip": "R192-24Oct-CircuitBreaker",
+  "steps": [
+    {
+      "step_id": 1,
+      "description": "The student turns off the circuit breaker box."
+    },
+    {
+      "step_id": 2,
+      "description": "The student opens the door of the front panel."
+    },
+    {
+      "step_id": 3,
+      "description": "The student inspects for visible damage."
+    },
+    {
+      "step_id": 4,
+      "description": "The student unplugs the components."
+    },
+    {
+      "step_id": 5,
+      "description": "The student puts the circuit breaker on the quality control table."
+    },
+    {
+      "step_id": 6,
+      "description": "The student plugs a new component into a socket."
+    },
+    {
+      "step_id": 7,
+      "description": "The student closes the panel door."
+    },
+    {
+      "step_id": 8,
+      "description": "The student turns on the main power."
+    },
+    {
+      "step_id": 9,
+      "description": "The student presses the reset button on the left side of the second break box."
+    },
+    {
+      "step_id": 10,
+      "description": "The student presses the button again to turn it off."
+    },
+    {
+      "step_id": 11,
+      "description": "The student turns off the main power."
+    },
+    {
+      "step_id": 12,
+      "description": "The student opens the panel."
+    },
+    {
+      "step_id": 13,
+      "description": "The student disconnects the replacement and puts it in the toolbox, then grabs the other breaker and reconnects it."
+    },
+    {
+      "step_id": 14,
+      "description": "The student closes the panel."
+    },
+    {
+      "step_id": 15,
+      "description": "The student turns the circuit breaker back on."
+    }
+  ]
+}

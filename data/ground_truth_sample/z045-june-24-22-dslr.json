@@ -1,0 +1,185 @@
+{
+  "video_name": "z045-june-24-22-dslr",
+  "task_type": "setup camera",
+  "total_duration_sec": 143,
+  "procedure_steps": [
+    {
+      "step_id": 1,
+      "description": "The student detaches the lens from the DSLR.",
+      "start_sec": 10.5,
+      "end_sec": 20
+    },
+    {
+      "step_id": 2,
+      "description": "The student attaches the lens to the DSLR.",
+      "start_sec": 21.3,
+      "end_sec": 31
+    },
+    {
+      "step_id": 3,
+      "description": "The student withdraws the lens cover.",
+      "start_sec": 34.4,
+      "end_sec": 52.1
+    },
+    {
+      "step_id": 4,
+      "description": "The student attaches the lens cover.",
+      "start_sec": 53.1,
+      "end_sec": 63.3
+    },
+    {
+      "step_id": 5,
+      "description": "The student turns on the DSLR.",
+      "start_sec": 65.1,
+      "end_sec": 70.2
+    },
+    {
+      "step_id": 6,
+      "description": "The student turns off the DSLR.",
+      "start_sec": 72.2,
+      "end_sec": 75.2
+    },
+    {
+      "step_id": 7,
+      "description": "The student exchanges the battery from the DSLR.",
+      "start_sec": 79.027,
+      "end_sec": 112.727
+    },
+    {
+      "step_id": 8,
+      "description": "The student exchanges the SD card from the DSLR.",
+      "start_sec": 116.4,
+      "end_sec": 139.2
+    }
+  ],
+  "events": [
+    {
+      "timestamp_sec": 20,
+      "type": "step_completion",
+      "step_id": 1,
+      "description": "The student detaches the lens from the DSLR."
+    },
+    {
+      "timestamp_sec": 23.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to assemble the lens but not is the correct position."
+    },
+    {
+      "timestamp_sec": 31,
+      "type": "step_completion",
+      "step_id": 2,
+      "description": "The student attaches the lens to the DSLR."
+    },
+    {
+      "timestamp_sec": 36.2,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by instructor verbally",
+      "correction_transcript": "none",
+      "description": "The lens cover, not the lens hood."
+    },
+    {
+      "timestamp_sec": 52.1,
+      "type": "step_completion",
+      "step_id": 3,
+      "description": "The student withdraws the lens cover."
+    },
+    {
+      "timestamp_sec": 54.9,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student inserts the lens cover but not pushed the buttons."
+    },
+    {
+      "timestamp_sec": 56.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student turns the lens cover for this assembles."
+    },
+    {
+      "timestamp_sec": 57.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student lifts and places again the lens cover to assemble it."
+    },
+    {
+      "timestamp_sec": 59.9,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "The student tries to insert at the force."
+    },
+    {
+      "timestamp_sec": 63.3,
+      "type": "step_completion",
+      "step_id": 4,
+      "description": "The student attaches the lens cover."
+    },
+    {
+      "timestamp_sec": 70.2,
+      "type": "step_completion",
+      "step_id": 5,
+      "description": "The student turns on the DSLR."
+    },
+    {
+      "timestamp_sec": 75.2,
+      "type": "step_completion",
+      "step_id": 6,
+      "description": "The student turns off the DSLR."
+    },
+    {
+      "timestamp_sec": 84.1,
+      "type": "error_detected",
+      "error_type": "wrong_action",
+      "severity": "warning",
+      "correction_type": "Wrong Action, corrected by student",
+      "correction_transcript": "none",
+      "description": "Failed attempt to open the battery door."
+    },
+    {
+      "timestamp_sec": 112.727,
+      "type": "step_completion",
+      "step_id": 7,
+      "description": "The student exchanges the battery from the DSLR."
+    },
+    {
+      "timestamp_sec": 139.2,
+      "type": "step_completion",
+      "step_id": 8,
+      "description": "The student exchanges the SD card from the DSLR."
+    }
+  ],
+  "idle_periods": [
+    {
+      "start_sec": 31,
+      "end_sec": 34.4,
+      "duration_sec": 3.3999999999999986
+    },
+    {
+      "start_sec": 75.2,
+      "end_sec": 79.027,
+      "duration_sec": 3.826999999999998
+    },
+    {
+      "start_sec": 112.727,
+      "end_sec": 116.4,
+      "duration_sec": 3.673000000000002
+    }
+  ]
+}
