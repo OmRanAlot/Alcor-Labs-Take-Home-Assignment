@@ -7,6 +7,9 @@ av>=11.0
 
 # JSON and data handling
 python-dotenv>=1.0
+pandas>=2.2
+
+scikit-image>=0.21
 
 # Optional: for testing and development
 pytest>=7.4

@@ -1,28 +1,40 @@
 """
-VLM Orchestrator — Starter Template
+VLM Orchestrator - Pipeline implementation.
 
-This is where you implement your pipeline. The harness feeds you frames
-and audio in real-time. You call VLMs, detect events, and emit them back.
-
-Usage:
-    python src/run.py \\
-        --procedure data/clip_procedures/CLIP.json \\
-        --video path/to/Video_pitchshift.mp4 \\
-        --output output/events.json \\
-        --speed 1.0
+Architecture:
+  Audio path  : on_audio -> background transcription via Gemini ->
+                TranscriptBuffer + correction-keyword scan -> error_detected.
+  Frame path  : on_frame -> motion+SSIM heuristic gate ->
+                Tier 1 VLM (with transcript context) -> optional Tier 2 ->
+                state machine -> step_completion. SSIM-stable streak ->
+                idle_detected.
+  Threading   : ThreadPoolExecutor runs transcription and Tier 2 escalations
+                so on_frame / on_audio return fast.
 """
 
 import json
 import os
 import sys
+import re
+import io
+import wave
+import base64
 import argparse
+import threading
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from typing import Dict, Any
-from datetime import datetime
-from dataclasses import asdict
+from typing import Dict, Any, List, Optional, Tuple
 
+import cv2
 import requests
 import numpy as np
+from skimage.metrics import structural_similarity as ssim
+import pandas as pd
+
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.getenv("OPENROUTER_API_KEY")
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -30,8 +42,21 @@ from src.harness import StreamingHarness
 from src.data_loader import load_procedure_json, validate_procedure_format
 
 
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+
+TIER1_MODEL = "google/gemini-2.5-flash-lite"
+TIER2_MODEL = "google/gemini-2.5-flash"
+AUDIO_MODEL = "google/gemini-2.5-flash"
+
+CORRECTION_PATTERN = re.compile(
+    r"\b(no|stop|wait|wrong|don't|do not|hold on|careful|not like that|"
+    r"that's not|incorrect|mistake|nope|hang on|undo)\b",
+    re.IGNORECASE,
+)
+
+
 # ==========================================================================
-# VLM API HELPER (provided — feel free to modify)
+# VLM API HELPERS
 # ==========================================================================
 
 def call_vlm(
@@ -41,20 +66,7 @@ def call_vlm(
     model: str = "google/gemini-2.5-flash",
     stream: bool = False,
 ) -> str:
-    """
-    Call a VLM via OpenRouter.
-
-    Args:
-        api_key: OpenRouter API key
-        frame_base64: Base64-encoded JPEG frame
-        prompt: Text prompt
-        model: OpenRouter model string
-        stream: If True, use streaming (SSE) responses for lower time-to-first-token
-
-    Returns:
-        Model response text
-    """
-    url = "https://openrouter.ai/api/v1/chat/completions"
+    """Call a vision VLM via OpenRouter with a single frame."""
     headers = {
         "Authorization": f"Bearer {api_key}",
         "HTTP-Referer": "https://github.com/alcor-labs/vlm-orchestrator-eval",
@@ -78,8 +90,7 @@ def call_vlm(
     }
 
     if stream:
-        # Streaming: read SSE chunks as they arrive
-        resp = requests.post(url, json=payload, headers=headers, stream=True, timeout=30)
+        resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, stream=True, timeout=30)
         resp.raise_for_status()
         full_text = ""
         for line in resp.iter_lines():
@@ -98,86 +109,544 @@ def call_vlm(
                 except (json.JSONDecodeError, KeyError):
                     pass
         return full_text
-    else:
-        resp = requests.post(url, json=payload, headers=headers, timeout=30)
-        resp.raise_for_status()
-        return resp.json()["choices"][0]["message"]["content"]
+
+    resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
+    resp.raise_for_status()
+    return resp.json()["choices"][0]["message"]["content"]
+
+
+def call_vlm_audio(
+    api_key: str,
+    audio_base64_wav: str,
+    prompt: str,
+    model: str = AUDIO_MODEL,
+) -> str:
+    """Call a multimodal VLM with a WAV audio chunk (base64-encoded)."""
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "HTTP-Referer": "https://github.com/alcor-labs/vlm-orchestrator-eval",
+        "X-Title": "VLM Orchestrator Evaluation",
+    }
+    payload = {
+        "model": model,
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt},
+                    {
+                        "type": "input_audio",
+                        "input_audio": {"data": audio_base64_wav, "format": "wav"},
+                    },
+                ],
+            }
+        ],
+    }
+    resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
+    resp.raise_for_status()
+    return resp.json()["choices"][0]["message"]["content"]
+
+
+def pcm16_to_wav_base64(pcm: bytes, sample_rate: int = 16000) -> str:
+    """Wrap raw 16-bit mono PCM as a WAV container, return base64 string."""
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)
+        wf.setframerate(sample_rate)
+        wf.writeframes(pcm)
+    return base64.b64encode(buf.getvalue()).decode("utf-8")
+
+
+def parse_json_block(text: str) -> Optional[dict]:
+    """Pull the first JSON object out of a model response."""
+    if not text:
+        return None
+    fence = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if fence:
+        try:
+            return json.loads(fence.group(1))
+        except json.JSONDecodeError:
+            pass
+    brace = re.search(r"\{.*\}", text, re.DOTALL)
+    if brace:
+        try:
+            return json.loads(brace.group(0))
+        except json.JSONDecodeError:
+            return None
+    return None
 
 
 # ==========================================================================
-# YOUR PIPELINE — IMPLEMENT THESE CALLBACKS
+# TRANSCRIPT BUFFER (audio context shared across threads)
+# ==========================================================================
+
+class TranscriptBuffer:
+    """Thread-safe rolling transcript with timestamped segments."""
+
+    def __init__(self) -> None:
+        self._segments: List[Tuple[float, float, str, bool]] = []
+        self._lock = threading.Lock()
+
+    def append(self, start_sec: float, end_sec: float, text: str, has_correction: bool) -> None:
+        with self._lock:
+            self._segments.append((start_sec, end_sec, text, has_correction))
+
+    def recent_text(self, since_sec: float, until_sec: float) -> str:
+        with self._lock:
+            parts = [t for (s, e, t, _) in self._segments if e >= since_sec and s <= until_sec and t]
+        return " ".join(parts).strip()
+
+    def latest_correction(self) -> Optional[Tuple[float, float, str]]:
+        with self._lock:
+            for (s, e, t, c) in reversed(self._segments):
+                if c:
+                    return (s, e, t)
+        return None
+
+
+# ==========================================================================
+# PIPELINE
 # ==========================================================================
 
 class Pipeline:
-    """
-    Your VLM orchestration pipeline.
+    """VLM orchestration pipeline.
 
-    The harness calls on_frame() and on_audio() in real-time as the video plays.
-    When you detect an event, call self.harness.emit_event({...}).
-
-    Key design decisions you need to make:
-    - Which frames to send to the VLM (not every frame — budget is limited)
-    - Whether/how to use audio (speech-to-text for instructor corrections?)
-    - Which model to use and when (cheap for easy frames, expensive for hard ones?)
-    - How to track procedure state (current step, completed steps)
-    - How to generate spoken responses for errors
+    Heuristic-gated cascade: cheap motion/SSIM filter -> Tier 1 VLM with
+    transcript context -> Tier 2 escalation when uncertain. Audio chunks
+    feed a transcript buffer and trigger error_detected on instructor
+    corrections.
     """
+
+    HEURISTIC_DIFF_THRESHOLD = 8.0
+    HEURISTIC_SSIM_THRESHOLD = 0.88
+    IDLE_SSIM_THRESHOLD = 0.95
+    IDLE_MIN_DURATION = 4.0
+
+    TIER1_MIN_INTERVAL = 1.5
+    TIER2_MIN_INTERVAL = 4.0
+
+    TIER1_LOW_CONFIDENCE = 0.6
+    TRANSCRIPT_CONTEXT_WINDOW = 12.0
+    
+    MAX_VLM_CALLS = 200
 
     def __init__(self, harness: StreamingHarness, api_key: str, procedure: Dict[str, Any]):
         self.harness = harness
         self.api_key = api_key
         self.procedure = procedure
         self.task_name = procedure.get("task") or procedure.get("task_name", "Unknown")
-        self.steps = procedure["steps"]
+        self.steps: List[Dict[str, Any]] = procedure["steps"]
 
-        # TODO: Initialize your pipeline state here
-        # Examples:
-        #   self.current_step = 0
-        #   self.completed_steps = set()
-        #   self.frame_buffer = []
-        #   self.last_activity_time = 0
-        #   self.api_calls = 0
-        #   self.total_cost = 0
+        # Heuristic state
+        self.prev_gray: Optional[np.ndarray] = None
+        self.last_diff: float = 0.0
+        self.last_ssim: float = 1.0
 
-    def on_frame(self, frame: np.ndarray, timestamp_sec: float, frame_base64: str):
-        """
-        Called by the harness for each video frame.
+        # State machine
+        self.current_step_idx: int = 0
+        self.completed_steps: set = set()
+        self.last_emitted_step_at: Dict[int, float] = {}
+        self._state_lock = threading.Lock()
 
-        Args:
-            frame: BGR numpy array (raw frame)
-            timestamp_sec: Current video timestamp
-            frame_base64: Pre-encoded JPEG base64 string (ready for VLM API)
+        # Idle tracking
+        self._idle_start: Optional[float] = None
+        self._idle_emitted: bool = False
 
-        TODO: Implement your frame processing logic.
-        When you detect an event, call:
+        # VLM rate limiting
+        self._last_tier1_t: float = -1e9
+        self._last_tier2_t: float = -1e9
+        self.total_vlm_calls: int = 0
+
+        # Audio + transcript
+        self.transcript = TranscriptBuffer()
+        self._executor = ThreadPoolExecutor(max_workers=3)
+        self._last_frame_b64: Optional[str] = None
+        self._last_frame_t: float = 0.0
+        self._error_emit_lock = threading.Lock()
+        self._last_error_emit_t: float = -1e9
+
+        # Analysis trace
+        self.analysis_path = Path(__file__).parent.parent / "data" / "analysis" / "diff_ssim_dslr2.csv"
+        self.analysis_path.parent.mkdir(parents=True, exist_ok=True)
+        self._analysis_rows: List[dict] = []
+
+    # ----------------------------------------------------------------------
+    # Frame callback
+    # ----------------------------------------------------------------------
+
+    def on_frame(self, frame: np.ndarray, timestamp_sec: float, frame_base64: str) -> None:
+        small = cv2.resize(frame, (320, 240))
+        gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
+
+        diff = 0.0
+        score = 1.0
+        if self.prev_gray is not None:
+            diff = float(np.mean(cv2.absdiff(gray, self.prev_gray)))
+            score, _ = ssim(self.prev_gray, gray, full=True)
+
+        self.prev_gray = gray
+        self.last_diff = diff
+        self.last_ssim = score
+        self._last_frame_b64 = frame_base64
+        self._last_frame_t = timestamp_sec
+        self._analysis_rows.append({"timestamp_sec": timestamp_sec, "diff": diff, "ssim": score})
+
+        with self._state_lock:
+            done = self.current_step_idx >= len(self.steps)
+        if done:
+            return
+
+        # Idle detection (heuristic only; cheap)
+        self._update_idle(timestamp_sec, score, diff)
+
+        # Heuristic gate for VLM
+        active = diff > self.HEURISTIC_DIFF_THRESHOLD or score < self.HEURISTIC_SSIM_THRESHOLD
+        if not active:
+            return
+
+        if (timestamp_sec - self._last_tier1_t) < self.TIER1_MIN_INTERVAL:
+            return
+        if self.total_vlm_calls >= self.MAX_VLM_CALLS:
+            return
+
+        self._last_tier1_t = timestamp_sec
+        self._executor.submit(self._run_tier1, frame_base64, timestamp_sec)
+
+    # ----------------------------------------------------------------------
+    # Audio callback
+    # ----------------------------------------------------------------------
+
+    def on_audio(self, audio_bytes: bytes, start_sec: float, end_sec: float) -> None:
+        if not audio_bytes:
+            return
+        self._executor.submit(self._transcribe_chunk, audio_bytes, start_sec, end_sec)
+
+    # ----------------------------------------------------------------------
+    # Tier 1 VLM
+    # ----------------------------------------------------------------------
+
+    def _run_tier1(self, frame_b64: str, timestamp_sec: float) -> None:
+        prompt = self._build_step_prompt(timestamp_sec, tier=1)
+        try:
+            self.total_vlm_calls += 1
+            raw = call_vlm(self.api_key, frame_b64, prompt, model=TIER1_MODEL)
+        except Exception as exc:
+            print(f"  [tier1] error at {timestamp_sec:.1f}s: {exc}")
+            return
+
+        parsed = parse_json_block(raw) or {}
+        decision = parsed.get("decision", "no_change")
+        step_id = parsed.get("step_id")
+        try:
+            confidence = float(parsed.get("confidence") or 0.0)
+        except (TypeError, ValueError):
+            confidence = 0.0
+        observation = (parsed.get("observation") or "")[:200]
+
+        ambiguous = decision == "ambiguous" or (
+            decision == "step_complete" and confidence < self.TIER1_LOW_CONFIDENCE
+        )
+
+        if ambiguous and (timestamp_sec - self._last_tier2_t) >= self.TIER2_MIN_INTERVAL:
+            self._last_tier2_t = timestamp_sec
+            self._executor.submit(self._run_tier2, frame_b64, timestamp_sec, observation)
+            return
+
+        if decision == "step_complete" and isinstance(step_id, int):
+            self._emit_step_completion(step_id, timestamp_sec, confidence, observation, source="video")
+
+    # ----------------------------------------------------------------------
+    # Tier 2 VLM (background)
+    # ----------------------------------------------------------------------
+
+    def _run_tier2(self, frame_b64: str, timestamp_sec: float, tier1_obs: str) -> None:
+        prompt = self._build_step_prompt(timestamp_sec, tier=2, tier1_obs=tier1_obs)
+        try:
+            self.total_vlm_calls += 1
+            raw = call_vlm(self.api_key, frame_b64, prompt, model=TIER2_MODEL)
+        except Exception as exc:
+            print(f"  [tier2] error at {timestamp_sec:.1f}s: {exc}")
+            return
+
+        parsed = parse_json_block(raw) or {}
+        decision = parsed.get("decision", "no_change")
+        step_id = parsed.get("step_id")
+        try:
+            confidence = float(parsed.get("confidence") or 0.0)
+        except (TypeError, ValueError):
+            confidence = 0.0
+        observation = (parsed.get("observation") or "")[:200]
+
+        if decision == "step_complete" and isinstance(step_id, int):
+            self._emit_step_completion(step_id, timestamp_sec, confidence, observation, source="both")
+
+    # ----------------------------------------------------------------------
+    # Audio transcription (background)
+    # ----------------------------------------------------------------------
+
+    def _transcribe_chunk(self, pcm: bytes, start_sec: float, end_sec: float) -> None:
+        try:
+            wav_b64 = pcm16_to_wav_base64(pcm)
+        except Exception as exc:
+            print(f"  [audio] wrap error {start_sec:.1f}s: {exc}")
+            return
+
+        prompt = (
+            "Transcribe this short instructor/student speech verbatim. "
+            "Reply ONLY as JSON: "
+            '{"transcript": "<verbatim text or empty>", '
+            '"contains_correction": <true|false>, '
+            '"reason": "<short reason if correction>"} '
+            "A correction is the instructor telling the student to stop, undo, or "
+            "redo something (\"no\", \"stop\", \"wait\", \"that's wrong\", \"undo\"). "
+            "If the audio has no speech, return empty transcript."
+        )
+        try:
+            self.total_vlm_calls += 1
+            raw = call_vlm_audio(self.api_key, wav_b64, prompt, model=AUDIO_MODEL)
+        except Exception as exc:
+            print(f"  [audio] vlm error {start_sec:.1f}s: {exc}")
+            return
+
+        parsed = parse_json_block(raw) or {}
+        text = (parsed.get("transcript") or "").strip()
+        flagged = bool(parsed.get("contains_correction"))
+        reason = (parsed.get("reason") or "").strip()
+
+        # Backstop: regex scan in case the model misses
+        keyword_hit = bool(CORRECTION_PATTERN.search(text)) if text else False
+        has_correction = flagged or keyword_hit
+
+        self.transcript.append(start_sec, end_sec, text, has_correction)
+
+        if has_correction:
+            self._handle_audio_correction(start_sec, end_sec, text, reason)
+
+    # ----------------------------------------------------------------------
+    # Error handling from audio
+    # ----------------------------------------------------------------------
+
+    def _handle_audio_correction(self, start_sec: float, end_sec: float, text: str, reason: str) -> None:
+        with self._error_emit_lock:
+            if (start_sec - self._last_error_emit_t) < 3.0:
+                return
+            self._last_error_emit_t = start_sec
+
+        # The mistake itself happened ~2-5s before the correction was spoken.
+        error_ts = max(0.0, start_sec - 3.0)
+        spoken = self._build_spoken_response(text, reason)
+
+        try:
+            self.harness.emit_event({
+                "timestamp_sec": error_ts,
+                "type": "error_detected",
+                "error_type": "wrong_action",
+                "severity": "warning",
+                "confidence": 0.7,
+                "source": "audio",
+                "description": f"Instructor correction: {text[:120]}",
+                "vlm_observation": reason or text[:160],
+                "spoken_response": spoken,
+            })
+        except ValueError as exc:
+            print(f"  [error] emit rejected: {exc}")
+            return
+
+        # Background: ask Tier 2 to classify with the most recent frame.
+        if self._last_frame_b64 is not None:
+            self._executor.submit(
+                self._classify_error_with_frame,
+                self._last_frame_b64,
+                error_ts,
+                text,
+            )
+
+    def _classify_error_with_frame(self, frame_b64: str, error_ts: float, transcript_snippet: str) -> None:
+        steps_block = self._format_step_window()
+        prompt = (
+            f"Task: {self.task_name}\n"
+            f"Expected upcoming steps:\n{steps_block}\n\n"
+            f"Instructor just said: \"{transcript_snippet}\".\n"
+            "Look at this frame from when the mistake likely occurred. "
+            "Reply ONLY as JSON: "
+            '{"error_type": "wrong_action|wrong_sequence|safety_violation|improper_technique|other", '
+            '"severity": "info|warning|critical", '
+            '"description": "<one short sentence>", '
+            '"spoken_response": "<short coaching sentence to the student>"}'
+        )
+        try:
+            self.total_vlm_calls += 1
+            raw = call_vlm(self.api_key, frame_b64, prompt, model=TIER2_MODEL)
+        except Exception as exc:
+            print(f"  [error-classify] {exc}")
+            return
+
+        parsed = parse_json_block(raw) or {}
+        try:
+            self.harness.emit_event({
+                "timestamp_sec": error_ts,
+                "type": "error_detected",
+                "error_type": parsed.get("error_type") or "wrong_action",
+                "severity": parsed.get("severity") or "warning",
+                "confidence": 0.8,
+                "source": "both",
+                "description": (parsed.get("description") or transcript_snippet)[:200],
+                "vlm_observation": (parsed.get("description") or "")[:200],
+                "spoken_response": parsed.get("spoken_response") or self._build_spoken_response(transcript_snippet, ""),
+            })
+        except ValueError as exc:
+            print(f"  [error-classify] emit rejected: {exc}")
+
+    # ----------------------------------------------------------------------
+    # Idle detection (heuristic-only)
+    # ----------------------------------------------------------------------
+
+    def _update_idle(self, timestamp_sec: float, score: float, diff: float) -> None:
+        if score >= self.IDLE_SSIM_THRESHOLD and diff < 3.0:
+            if self._idle_start is None:
+                self._idle_start = timestamp_sec
+                self._idle_emitted = False
+            elif (
+                not self._idle_emitted
+                and (timestamp_sec - self._idle_start) >= self.IDLE_MIN_DURATION
+            ):
+                self._idle_emitted = True
+                try:
+                    self.harness.emit_event({
+                        "timestamp_sec": timestamp_sec,
+                        "type": "idle_detected",
+                        "confidence": 0.6,
+                        "source": "video",
+                        "description": f"No motion for ~{timestamp_sec - self._idle_start:.1f}s",
+                    })
+                except ValueError as exc:
+                    print(f"  [idle] emit rejected: {exc}")
+        else:
+            self._idle_start = None
+            self._idle_emitted = False
+
+    # ----------------------------------------------------------------------
+    # State machine
+    # ----------------------------------------------------------------------
+
+    def _emit_step_completion(
+        self,
+        step_id: int,
+        timestamp_sec: float,
+        confidence: float,
+        observation: str,
+        source: str,
+    ) -> None:
+        with self._state_lock:
+            if step_id in self.completed_steps:
+                return
+            if not (1 <= step_id <= len(self.steps)):
+                return
+
+            expected_idx = self.current_step_idx
+            target_idx = step_id - 1
+            # Only accept current step or one ahead.
+            if target_idx < expected_idx or target_idx > expected_idx + 1:
+                return
+
+            # Mark intermediate skipped step as completed implicitly.
+            for skipped_idx in range(expected_idx, target_idx):
+                sid = self.steps[skipped_idx]["step_id"]
+                self.completed_steps.add(sid)
+
+            description = self.steps[target_idx].get("description", "")
+            self.completed_steps.add(step_id)
+            self.last_emitted_step_at[step_id] = timestamp_sec
+            self.current_step_idx = target_idx + 1
+            self._idle_start = None
+            self._idle_emitted = False
+
+        try:
             self.harness.emit_event({
                 "timestamp_sec": timestamp_sec,
-                "type": "step_completion",  # or "error_detected" or "idle_detected"
-                "step_id": 1,
-                "confidence": 0.9,
-                "description": "...",
-                "source": "video",
-                "vlm_observation": "...",
-                # For errors, also include:
-                "spoken_response": "Stop — you need to turn off the power first.",
+                "type": "step_completion",
+                "step_id": step_id,
+                "confidence": max(0.0, min(1.0, confidence or 0.5)),
+                "source": source,
+                "description": description,
+                "vlm_observation": observation,
             })
-        """
-        pass  # TODO: Implement
+        except ValueError as exc:
+            print(f"  [step] emit rejected: {exc}")
 
-    def on_audio(self, audio_bytes: bytes, start_sec: float, end_sec: float):
-        """
-        Called by the harness for each audio chunk.
+    # ----------------------------------------------------------------------
+    # Prompt building
+    # ----------------------------------------------------------------------
 
-        Args:
-            audio_bytes: Raw PCM audio (16kHz, mono, 16-bit)
-            start_sec: Chunk start time in video
-            end_sec: Chunk end time in video
+    def _format_step_window(self) -> str:
+        with self._state_lock:
+            idx = self.current_step_idx
+        window = self.steps[idx : idx + 3]
+        if not window:
+            return "(all steps already completed)"
+        lines = []
+        for step in window:
+            lines.append(f"  - step_id {step['step_id']}: {step['description']}")
+        return "\n".join(lines)
 
-        TODO: Implement your audio processing logic.
-        Consider: speech-to-text, keyword detection, silence detection.
-        The instructor's verbal corrections are a strong signal for errors.
-        """
-        pass  # TODO: Implement
+    def _build_step_prompt(self, timestamp_sec: float, tier: int, tier1_obs: str = "") -> str:
+        since = max(0.0, timestamp_sec - self.TRANSCRIPT_CONTEXT_WINDOW)
+        transcript_ctx = self.transcript.recent_text(since, timestamp_sec) or "(no recent speech)"
+
+        with self._state_lock:
+            completed = sorted(self.completed_steps)
+        completed_repr = completed if completed else "(none)"
+
+        steps_block = self._format_step_window()
+        last_correction = self.transcript.latest_correction()
+        correction_line = ""
+        if last_correction:
+            cs, _ce, ct = last_correction
+            if cs >= timestamp_sec - 15.0:
+                correction_line = f"Recent instructor correction at {cs:.1f}s: \"{ct[:120]}\".\n"
+
+        tier_hint = ""
+        if tier == 2:
+            tier_hint = (
+                "A cheaper model was uncertain. Examine the frame carefully and only "
+                "claim a step is complete if you can clearly justify it.\n"
+                f"Tier-1 noted: {tier1_obs}\n"
+            )
+
+        return (
+            f"You are watching a technician perform task: {self.task_name}.\n"
+            f"Already completed step_ids: {completed_repr}.\n"
+            f"Candidate next steps (only choose one of these):\n{steps_block}\n\n"
+            f"Recent speech transcript (last ~{int(self.TRANSCRIPT_CONTEXT_WINDOW)}s): \"{transcript_ctx}\"\n"
+            f"{correction_line}"
+            f"{tier_hint}"
+            "Decide whether the LATEST visible action just COMPLETED one of the candidate "
+            "next steps in this frame. Be conservative: only mark complete if the action "
+            "looks finished (not in progress).\n\n"
+            "Reply ONLY as JSON: "
+            '{"decision": "step_complete|in_progress|no_change|ambiguous", '
+            '"step_id": <int or null>, '
+            '"confidence": <0..1>, '
+            '"observation": "<one short sentence>"}'
+        )
+
+    def _build_spoken_response(self, transcript_text: str, reason: str) -> str:
+        if reason:
+            return f"Heads up - {reason}. Pause and double-check before continuing."
+        return "Hold on - re-check the last step before moving on."
+
+    # ----------------------------------------------------------------------
+    # Cleanup
+    # ----------------------------------------------------------------------
+
+    def shutdown(self) -> None:
+        self._executor.shutdown(wait=True, cancel_futures=False)
+        if self._analysis_rows:
+            try:
+                pd.DataFrame(self._analysis_rows).to_csv(self.analysis_path, index=False)
+            except Exception as exc:
+                print(f"  [analysis] csv write failed: {exc}")
 
 
 # ==========================================================================
@@ -199,7 +668,6 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Validate inputs only")
     args = parser.parse_args()
 
-    # Load procedure
     print("=" * 60)
     print("  VLM ORCHESTRATOR")
     print("=" * 60)
@@ -230,7 +698,6 @@ def main():
         print("  ERROR: Set OPENROUTER_API_KEY or pass --api-key")
         sys.exit(1)
 
-    # Create harness and pipeline
     harness = StreamingHarness(
         video_path=args.video,
         procedure_path=args.procedure,
@@ -241,23 +708,23 @@ def main():
 
     pipeline = Pipeline(harness, api_key, procedure)
 
-    # Register callbacks
     harness.on_frame(pipeline.on_frame)
     harness.on_audio(pipeline.on_audio)
 
-    # Run
-    results = harness.run()
+    try:
+        results = harness.run()
+    finally:
+        pipeline.shutdown()
 
-    # Save
     harness.save_results(results, args.output)
 
     print()
     print(f"  Output: {args.output}")
     print(f"  Events: {len(results.events)}")
     print()
-
+    print(f"  Total VLM calls: {pipeline.total_vlm_calls}")
     if not results.events:
-        print("  WARNING: No events detected. Implement Pipeline.on_frame() and Pipeline.on_audio().")
+        print("  WARNING: No events detected.")
 
 
 if __name__ == "__main__":
