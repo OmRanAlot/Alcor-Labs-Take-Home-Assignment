@@ -17,6 +17,8 @@ import os
 import sys
 import re
 import io
+import time
+import random
 import wave
 import base64
 import argparse
@@ -32,7 +34,12 @@ from skimage.metrics import structural_similarity as ssim
 import pandas as pd
 
 from dotenv import load_dotenv
-load_dotenv()
+
+_env_path = Path(__file__).resolve().parent.parent / ".env"
+_loaded = load_dotenv(dotenv_path=_env_path)
+if not _loaded:
+    # Fallback: try CWD-based search
+    _loaded = load_dotenv()
 
 api_key = os.getenv("OPENROUTER_API_KEY")
 
@@ -48,6 +55,15 @@ TIER1_MODEL = "google/gemini-2.5-flash-lite"
 TIER2_MODEL = "google/gemini-2.5-flash"
 AUDIO_MODEL = "google/gemini-2.5-flash"
 
+FALLBACK_MODEL = "google/gemini-2.5-flash"
+
+RETRY_STATUSES = {408, 409, 425, 429, 500, 502, 503, 504}
+MAX_RETRIES = 3
+BASE_BACKOFF_SEC = 1.0
+
+DEFAULT_TIMEOUT_SEC = 30
+AUDIO_TIMEOUT_SEC = 45
+
 CORRECTION_PATTERN = re.compile(
     r"\b(no|stop|wait|wrong|don't|do not|hold on|careful|not like that|"
     r"that's not|incorrect|mistake|nope|hang on|undo)\b",
@@ -59,6 +75,68 @@ CORRECTION_PATTERN = re.compile(
 # VLM API HELPERS
 # ==========================================================================
 
+def _build_headers(api_key: str) -> Dict[str, str]:
+    return {
+        "Authorization": f"Bearer {api_key}",
+        "HTTP-Referer": "https://github.com/alcor-labs/vlm-orchestrator-eval",
+        "X-Title": "VLM Orchestrator Evaluation",
+    }
+
+
+def _extract_content(resp_json: Dict[str, Any]) -> str:
+    try:
+        return resp_json["choices"][0]["message"]["content"] or ""
+    except (KeyError, IndexError, TypeError):
+        return ""
+
+
+def _post_with_retry(
+    payload: Dict[str, Any],
+    headers: Dict[str, str],
+    timeout: int,
+    label: str,
+) -> Optional[requests.Response]:
+    """POST with exponential backoff on transient errors. Returns final response or None."""
+    last_err: Optional[str] = None
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=timeout)
+        except requests.RequestException as exc:
+            last_err = f"network: {exc}"
+            if attempt >= MAX_RETRIES:
+                print(f"  [{label}] giving up after {attempt + 1} attempts: {last_err}")
+                return None
+        else:
+            if resp.status_code < 400:
+                return resp
+            if resp.status_code not in RETRY_STATUSES or attempt >= MAX_RETRIES:
+                body = (resp.text or "")[:400]
+                print(f"  [{label}] HTTP {resp.status_code}: {body}")
+                return resp
+            last_err = f"HTTP {resp.status_code}"
+
+        sleep_s = BASE_BACKOFF_SEC * (2 ** attempt) + random.uniform(0, 0.5)
+        time.sleep(sleep_s)
+
+    return None
+
+
+def _post_json(
+    payload: Dict[str, Any],
+    api_key: str,
+    timeout: int,
+    label: str,
+) -> Optional[Dict[str, Any]]:
+    resp = _post_with_retry(payload, _build_headers(api_key), timeout, label)
+    if resp is None or resp.status_code >= 400:
+        return None
+    try:
+        return resp.json()
+    except ValueError as exc:
+        print(f"  [{label}] bad JSON body: {exc}")
+        return None
+
+
 def call_vlm(
     api_key: str,
     frame_base64: str,
@@ -66,12 +144,12 @@ def call_vlm(
     model: str = "google/gemini-2.5-flash",
     stream: bool = False,
 ) -> str:
-    """Call a vision VLM via OpenRouter with a single frame."""
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "HTTP-Referer": "https://github.com/alcor-labs/vlm-orchestrator-eval",
-        "X-Title": "VLM Orchestrator Evaluation",
-    }
+    """Call a vision VLM via OpenRouter with a single frame.
+
+    Retries on 429/5xx. On 404 (model not found), falls back to FALLBACK_MODEL.
+    Streaming path is kept for compatibility but is NOT retried.
+    """
+    headers = _build_headers(api_key)
     payload = {
         "model": model,
         "stream": stream,
@@ -90,8 +168,10 @@ def call_vlm(
     }
 
     if stream:
-        resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, stream=True, timeout=30)
-        resp.raise_for_status()
+        resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, stream=True, timeout=DEFAULT_TIMEOUT_SEC)
+        if resp.status_code >= 400:
+            print(f"  [vlm-stream] HTTP {resp.status_code}: {(resp.text or '')[:300]}")
+            resp.raise_for_status()
         full_text = ""
         for line in resp.iter_lines():
             if not line:
@@ -110,9 +190,14 @@ def call_vlm(
                     pass
         return full_text
 
-    resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
-    resp.raise_for_status()
-    return resp.json()["choices"][0]["message"]["content"]
+    data = _post_json(payload, api_key, DEFAULT_TIMEOUT_SEC, f"vlm:{model}")
+    if data is None and model != FALLBACK_MODEL:
+        payload["model"] = FALLBACK_MODEL
+        print(f"  [vlm] falling back to {FALLBACK_MODEL}")
+        data = _post_json(payload, api_key, DEFAULT_TIMEOUT_SEC, f"vlm:{FALLBACK_MODEL}")
+    if data is None:
+        return ""
+    return _extract_content(data)
 
 
 def call_vlm_audio(
@@ -122,11 +207,6 @@ def call_vlm_audio(
     model: str = AUDIO_MODEL,
 ) -> str:
     """Call a multimodal VLM with a WAV audio chunk (base64-encoded)."""
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "HTTP-Referer": "https://github.com/alcor-labs/vlm-orchestrator-eval",
-        "X-Title": "VLM Orchestrator Evaluation",
-    }
     payload = {
         "model": model,
         "messages": [
@@ -142,9 +222,28 @@ def call_vlm_audio(
             }
         ],
     }
-    resp = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
-    resp.raise_for_status()
-    return resp.json()["choices"][0]["message"]["content"]
+    data = _post_json(payload, api_key, AUDIO_TIMEOUT_SEC, f"audio:{model}")
+    if data is None and model != FALLBACK_MODEL:
+        payload["model"] = FALLBACK_MODEL
+        print(f"  [audio] falling back to {FALLBACK_MODEL}")
+        data = _post_json(payload, api_key, AUDIO_TIMEOUT_SEC, f"audio:{FALLBACK_MODEL}")
+    if data is None:
+        return ""
+    return _extract_content(data)
+
+
+def probe_openrouter(api_key: str) -> bool:
+    """Single cheap text call to verify key + connectivity. True on success."""
+    payload = {
+        "model": TIER1_MODEL,
+        "messages": [{"role": "user", "content": "Reply with: ok"}],
+        "max_tokens": 8,
+    }
+    data = _post_json(payload, api_key, 15, "probe")
+    if data is None:
+        return False
+    content = _extract_content(data).strip().lower()
+    return bool(content)
 
 
 def pcm16_to_wav_base64(pcm: bytes, sample_rate: int = 16000) -> str:
@@ -435,8 +534,23 @@ class Pipeline:
 
         # The mistake itself happened ~2-5s before the correction was spoken.
         error_ts = max(0.0, start_sec - 3.0)
-        spoken = self._build_spoken_response(text, reason)
 
+        # Single-emit policy: classify with frame if available, otherwise emit
+        # audio-only. Exactly one error_detected event per correction.
+        if self._last_frame_b64 is not None:
+            frame_b64 = self._last_frame_b64
+            self._executor.submit(
+                self._classify_error_with_frame,
+                frame_b64,
+                error_ts,
+                text,
+                reason,
+            )
+        else:
+            self._emit_audio_only_error(error_ts, text, reason)
+
+    def _emit_audio_only_error(self, error_ts: float, text: str, reason: str) -> None:
+        spoken = self._build_spoken_response(text, reason)
         try:
             self.harness.emit_event({
                 "timestamp_sec": error_ts,
@@ -451,18 +565,14 @@ class Pipeline:
             })
         except ValueError as exc:
             print(f"  [error] emit rejected: {exc}")
-            return
 
-        # Background: ask Tier 2 to classify with the most recent frame.
-        if self._last_frame_b64 is not None:
-            self._executor.submit(
-                self._classify_error_with_frame,
-                self._last_frame_b64,
-                error_ts,
-                text,
-            )
-
-    def _classify_error_with_frame(self, frame_b64: str, error_ts: float, transcript_snippet: str) -> None:
+    def _classify_error_with_frame(
+        self,
+        frame_b64: str,
+        error_ts: float,
+        transcript_snippet: str,
+        reason: str = "",
+    ) -> None:
         steps_block = self._format_step_window()
         prompt = (
             f"Task: {self.task_name}\n"
@@ -475,14 +585,20 @@ class Pipeline:
             '"description": "<one short sentence>", '
             '"spoken_response": "<short coaching sentence to the student>"}'
         )
+        raw = ""
         try:
             self.total_vlm_calls += 1
             raw = call_vlm(self.api_key, frame_b64, prompt, model=TIER2_MODEL)
         except Exception as exc:
             print(f"  [error-classify] {exc}")
+
+        parsed = parse_json_block(raw) if raw else None
+        if not parsed:
+            # Classification failed or returned nothing: fall back to audio-only
+            # emit so the event is still recorded exactly once.
+            self._emit_audio_only_error(error_ts, transcript_snippet, reason)
             return
 
-        parsed = parse_json_block(raw) or {}
         try:
             self.harness.emit_event({
                 "timestamp_sec": error_ts,
@@ -493,7 +609,7 @@ class Pipeline:
                 "source": "both",
                 "description": (parsed.get("description") or transcript_snippet)[:200],
                 "vlm_observation": (parsed.get("description") or "")[:200],
-                "spoken_response": parsed.get("spoken_response") or self._build_spoken_response(transcript_snippet, ""),
+                "spoken_response": parsed.get("spoken_response") or self._build_spoken_response(transcript_snippet, reason),
             })
         except ValueError as exc:
             print(f"  [error-classify] emit rejected: {exc}")
@@ -697,6 +813,12 @@ def main():
     if not api_key:
         print("  ERROR: Set OPENROUTER_API_KEY or pass --api-key")
         sys.exit(1)
+
+    print("  Probing OpenRouter...")
+    if not probe_openrouter(api_key):
+        print("  ERROR: OpenRouter probe failed. Check API key and network.")
+        sys.exit(2)
+    print("  OpenRouter OK")
 
     harness = StreamingHarness(
         video_path=args.video,
